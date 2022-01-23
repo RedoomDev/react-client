@@ -1,3 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+   background-color: rgb(39 39 42);
+   overflow-x: hidden;
+}
+
+.cizgi {
+   height: 2px;
+   background-color: white;
+   width: 95vw;
+   margin: auto;
+   border-radius: 20px;
+}
+
+.navbar-boards {
+   display: flex;
+   flex-wrap: wrap;
+   margin: auto;
+   max-width: 95vw;
+}
+
+.main-area {
+   display: grid;
+   grid-template-columns: auto 200px;
+   justify-content: center;
+}
+
+.boards-side {
+   width: 200px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 10px;
+   padding: 20px;
+}
+
+.boards {
+   padding: 20px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 10px;
+   width: 55vw;
+   text-align: left;
+}
+
+.text-head {
+   font-size: 20px;
+}
