@@ -1,4 +1,5 @@
 import { BoardContext } from "../contexts/board.context";
+import { Board } from "./board";
 
 
 export function Boards(params) {
@@ -12,10 +13,7 @@ export function Boards(params) {
                   <div className="cizgi-2"></div>
                   <div className="boards-items">
                      {value[0].map(board => (
-                        <div className="board-item">
-                           <div className="board-item-head">{board.baslik}</div>
-                           <div className="board-item-about">{board.about}</div>
-                        </div>
+                        <Board board={board}></Board>
                      ))}
                   </div>
                </div>
