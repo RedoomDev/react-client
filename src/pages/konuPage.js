@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Boards } from "../components/boards";
 import { KonuPosts } from "../components/konuPosts";
@@ -19,7 +20,7 @@ export function KonuPage() {
 
    const [load, setLoad] = useState(true)
 
-   const slug = "anime"
+   const { slug } = useParams();
 
    useEffect(() => {
       GetPostsFromBoard({ slug: slug, limit: limit, skip: skip }).then(res => {
@@ -28,7 +29,7 @@ export function KonuPage() {
             setPosts(res.data)
          }
       })
-   }, [])
+   }, [slug])
 
    return (
       <div className="text-white font-mono">
@@ -36,7 +37,7 @@ export function KonuPage() {
          <div className="container">
             <div className="main-area">
                <div>
-                  <KonuPosts tag="Gönderiler" posts={posts}></KonuPosts>
+                  <KonuPosts tag="Gönderiler" posts={posts} key={slug}></KonuPosts>
                </div>
                <div>
                   <MostPosts></MostPosts>

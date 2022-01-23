@@ -9,7 +9,7 @@ export function Navbar() {
          {value => (
             <div className="w-screen bg-zinc-900 ">
                <div style={{ paddingTop: 10 }}></div>
-               <span className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</span>
+               <Link to="/" className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</Link>
                <div className="cizgi"></div>
                <div className="text-2xl text-center navbar-boards">
                   {value[0].map((a, idx) => (
