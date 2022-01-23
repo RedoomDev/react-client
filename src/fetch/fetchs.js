@@ -37,3 +37,15 @@ export function GetPostsFromBoard({ slug, skip, limit }) {
 
    return result;
 }
+
+export function GetPost({ id, skip, limit }) {
+   let post = new Promise((resolve) => {
+      axios.get(api_url + "/board/get/post/" + id + "?limit=" + limit + "&skip=" + skip).then(res => {
+         resolve(res.data)
+      }).catch(err => resolve(errors.errorMessages.axiosError));
+   });
+
+   let result = post;
+
+   return result;
+}

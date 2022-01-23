@@ -6,14 +6,14 @@ import { KonuPosts } from "../components/konuPosts";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import { BoardPostsContext } from "../contexts/boardPosts.context";
-import { GetPostsFromBoard } from "../fetch/fetchs";
+import { GetPost } from "../fetch/fetchs";
 
 
 
 
 export function PostPage() {
 
-   const [posts, setPosts] = useState([])
+   const [post, setPost] = useState([])
 
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)
@@ -23,6 +23,13 @@ export function PostPage() {
    const { id } = useParams();
 
    useEffect(() => {
+      GetPost({ id, skip, limit }).then(res => {
+         if (res.data) {
+            setLoad(false)
+            setPost(res.data)
+            console.log(res.data)
+         }
+      })
       window.scrollTo(0, 0)
    }, [id])
 
@@ -34,34 +41,37 @@ export function PostPage() {
                <div>
                   <div className="post-area bg-zinc-900">
                      <div className="post-head">
-                        <span className="post-head-text">Skürt</span>
+                        <span className="post-head-text">{post.baslik}</span>
                         <div className="cizgi-2"></div>
                      </div>
                      <div className="post-main">
                         <div className="post-author">
-                           <span className="post-author-name">Gönderen: Raksix</span>
+                           <span className="post-author-name">Gönderen: </span>
                         </div>
                         <div className="post-content">
                            dsadsadsa asdasdsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad sadasdsadsadsadsad
                         </div>
                      </div>
                      <div className="cizgi-2"></div>
-                     <div className="post-head-text">Yorumlar:</div>
+                     <div className="post-head-text">Yorumlar: </div>
                      <div className="cizgi-2"></div>
 
-                     <div className="post-comment">
-                        <div className="post-main">
-                           <div className="post-author">
-                              <span className="post-author-name">Gönderen: Raksix</span>
-                           </div>
-                           <div className="post-content">
-                              dsadsadsa asdasdsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad sadasdsadsadsadsad
-                           </div>
-                        </div>
-                        <div className="cizgi-2"></div>
-                     </div>
-                     
+                     {post.comments ? (<>
 
+                        {post.comments.map(c => (
+                           <div className="post-comment">
+                              <div className="post-main">
+                                 <div className="post-author">
+                                    <span className="post-author-name">Gönderen: {c.username}</span>
+                                 </div>
+                                 <div className="post-content">
+                                    {c.icerik}
+                                 </div>
+                              </div>
+                              <div className="cizgi-2"></div>
+                           </div>
+                        ))}
+                     </>) : (<></>)}
 
                   </div>
                </div>
