@@ -1,6 +1,7 @@
 import axios from "axios";
 import { api_url } from "../config";
 import { errors } from "./errors";
+const qs = require('qs');
 
 export function GetBoards() {
    let boards = new Promise((resolve) => {
@@ -46,6 +47,27 @@ export function GetPost({ id, skip, limit }) {
    });
 
    let result = post;
+
+   return result;
+}
+
+export function PostReply({ username, icerik, reply, post }) {
+
+   var data = {
+      username,
+      icerik,
+      reply
+   }
+
+   let replyPost = new Promise((resolve) => {
+      axios({
+         url: api_url + "/board/new/comment/" + post,
+         method: 'POST',
+         data: qs.stringify(data)
+      }).then(res => resolve(res.data)).catch(err => resolve(errors.errorMessages.axiosError));
+   })
+
+   let result = replyPost;
 
    return result;
 }

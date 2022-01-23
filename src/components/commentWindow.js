@@ -30,7 +30,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                }}></textarea>
                <span>{icerik.length} / 5000</span>
                <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                  PostReply({ username, icerik, reply, post }).then(res => {
+                  PostReply({ username, icerik, post }).then(res => {
                      console.log(res)
                      if (res.message) {
                         setErr(res.message)

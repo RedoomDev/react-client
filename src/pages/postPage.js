@@ -32,7 +32,6 @@ export function PostPage() {
          if (res.data) {
             setLoad(false)
             setPost(res.data)
-            console.log(res.data)
          }
       })
       window.scrollTo(0, 0)
@@ -66,7 +65,10 @@ export function PostPage() {
                               <div className="post-comment">
                                  <div className="post-main">
                                     <div className="post-author">
-                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => setReplyModal(true), setReply(c.id)}>[Yanıtla]</span></span>
+                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => {
+                                          setReplyModal(true)
+                                          setReply(c.id)
+                                       }}>[Yanıtla]</span></span>
                                     </div>
                                     <div className="post-content">
                                        {c.icerik}
@@ -102,7 +104,7 @@ export function PostPage() {
             </div>
          </div>
          {replyModal === true ? (
-            <ReplyWindow setModal={setReplyModal} setReply={reply}></ReplyWindow>
+            <ReplyWindow setModal={setReplyModal} reply={reply} post={post.id}></ReplyWindow>
          ) : (<></>)}
       </div>
    )
