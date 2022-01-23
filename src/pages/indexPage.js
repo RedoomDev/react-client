@@ -12,7 +12,11 @@ export function IndexPage() {
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
-               <Boards></Boards>
+               <div>
+                  <Boards tag="Konular"></Boards>
+                  <Boards tag="Bu Haftanın Pöpüler Konuları"></Boards>
+                  <Boards tag="En Çok Yeni Gönderi Alan Konular"></Boards>
+               </div>
                <div>
                   <MostPosts></MostPosts>
                </div>
