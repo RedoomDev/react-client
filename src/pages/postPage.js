@@ -15,6 +15,7 @@ import { GetPost } from "../fetch/fetchs";
 export function PostPage() {
 
    const [post, setPost] = useState([])
+   const [reply, setReply] = useState("")
 
 
    const [limit, setLimit] = useState(20)
@@ -65,7 +66,7 @@ export function PostPage() {
                               <div className="post-comment">
                                  <div className="post-main">
                                     <div className="post-author">
-                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => setReplyModal(true)}>[Yanıtla]</span></span>
+                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => setReplyModal(true), setReply(c.id)}>[Yanıtla]</span></span>
                                     </div>
                                     <div className="post-content">
                                        {c.icerik}
@@ -101,7 +102,7 @@ export function PostPage() {
             </div>
          </div>
          {replyModal === true ? (
-            <ReplyWindow setModal={setReplyModal}></ReplyWindow>
+            <ReplyWindow setModal={setReplyModal} setReply={reply}></ReplyWindow>
          ) : (<></>)}
       </div>
    )
