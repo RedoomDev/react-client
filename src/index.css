@@ -144,6 +144,9 @@ body {
 }
 
 @media (max-width: 1200px) {
+   .window{
+      width: 90%;
+   }
    .main-area {
       display: flex;
       flex-direction: column;
