@@ -25,3 +25,15 @@ export function GetPosts() {
 
    return result;
 }
+
+export function GetPostsFromBoard({ slug, skip, limit }) {
+   let posts = new Promise((resolve) => {
+      axios.get(api_url + "/board/get/posts/" + slug + "?limit=" + limit + "&skip=" + skip).then(res => {
+         resolve(res.data)
+      }).catch(err => resolve(errors.errorMessages.axiosError));
+   });
+
+   let result = posts;
+
+   return result;
+}
