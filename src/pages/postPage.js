@@ -49,7 +49,7 @@ export function PostPage() {
                            <span className="post-author-name">Gönderen: </span>
                         </div>
                         <div className="post-content">
-                           dsadsadsa asdasdsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsad sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad sadasdsadsadsadsad
+                           {post.icerik}
                         </div>
                      </div>
                      <div className="cizgi-2"></div>
