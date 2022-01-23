@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthContext } from './contexts/auth.context';
 import { BoardContext } from './contexts/board.context';
 import { PostContext } from './contexts/post.context';
-import { GetBoards } from './fetch/fetchs';
+import { GetBoards, GetPosts } from './fetch/fetchs';
 
 
 function Index() {
@@ -20,7 +20,12 @@ function Index() {
       GetBoards().then(res => {
          if (res.data) {
             setAllBoards(res.data)
-            setFetch(true)
+            GetPosts().then(res => {
+               if (res.data) {
+                  setPosts(res.data)
+                  setFetch(true)
+               }
+            })
          }
       })
    }, [])

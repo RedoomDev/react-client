@@ -11,5 +11,17 @@ export function GetBoards() {
 
    let result = boards;
 
-   return result
+   return result;
+}
+
+export function GetPosts() {
+   let posts = new Promise((resolve) => {
+      axios.get(api_url + "/board/get/posts").then(res => {
+         resolve(res.data)
+      }).catch(err => resolve(errors.errorMessages.axiosError));
+   });
+
+   let result = posts;
+
+   return result;
 }
