@@ -29,6 +29,7 @@ export function KonuPage() {
             setPosts(res.data)
          }
       })
+      window.scrollTo(0, 0)
    }, [slug])
 
    return (

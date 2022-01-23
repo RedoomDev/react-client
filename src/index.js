@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Loader from "react-js-loader";
 import { AuthContext } from './contexts/auth.context';
 import { BoardContext } from './contexts/board.context';
 import { PostContext } from './contexts/post.context';
@@ -35,7 +36,13 @@ function Index() {
          <BoardContext.Provider value={[allBoards, setAllBoards]}>
             <PostContext.Provider value={[posts, setPosts]}>
                <AuthContext.Provider value={[authData, setAuthData]}>
-                  {fetch === true ? (<App />) : (<></>)}
+                  {fetch === true ? (<App />) : (
+                     <div style={{ marginTop: '20%' }}>
+                        <Loader type="box-rectangular">
+
+                        </Loader>
+                     </div>
+                  )}
                </AuthContext.Provider>
             </PostContext.Provider>
          </BoardContext.Provider>

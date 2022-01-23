@@ -49,6 +49,27 @@ body {
    text-align: left;
 }
 
+.post-area {
+   padding: 20px;
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 10px;
+   width: 55vw;
+   text-align: left;
+}
+
+.post-head-text{
+   font-size: 25px;
+}
+
+.post-content{
+   word-wrap: break-word;
+}
+
+.post-author-name{
+   font-size: 20px;
+}
+
 .board-item {
    margin-top: 10px;
    padding: 5px;
@@ -59,7 +80,7 @@ body {
    font-size: 20px;
 }
 
-.board-item-about{
+.board-item-about {
    word-wrap: break-word;
 }
 
@@ -68,7 +89,8 @@ body {
       display: flex;
       flex-direction: column-reverse;
    }
-   .boards{
+
+   .boards {
       width: auto;
       margin: 10px;
    }
