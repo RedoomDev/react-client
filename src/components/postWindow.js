@@ -1,12 +1,13 @@
 import { useEffect } from "react"
 import { useState } from "react/cjs/react.development"
-import { PostReply } from "../fetch/fetchs"
+import { NewPost } from "../fetch/fetchs"
 
 
 
-export function PostWindow({ setModal, reply, post }) {
+export function PostWindow({ setModal, board }) {
 
    const [username, setUsername] = useState("")
+   const [baslik, setBaslik] = useState("")
    const [icerik, setIcerik] = useState("")
    const [err, setErr] = useState("")
 
@@ -24,18 +25,22 @@ export function PostWindow({ setModal, reply, post }) {
                <input className="form-input bg-zinc-800" onChange={(e) => {
                   setUsername(e.target.value)
                }}></input>
+               <div className="form-label">Başlık</div>
+               <input className="form-input bg-zinc-800" onChange={(e) => {
+                  setBaslik(e.target.value)
+               }}></input>
                <div className="form-label">İçerik</div>
                <textarea className="form-input bg-zinc-800" maxLength="5000" onChange={(e) => {
                   setIcerik(e.target.value)
                }}></textarea>
                <span>{icerik.length} / 5000</span>
                <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                  PostReply({ username, icerik, reply, post }).then(res => {
+                  NewPost({ username, icerik, board, baslik }).then(res => {
                      console.log(res)
                      if (res.message) {
                         setErr(res.message)
                      }
-                     if (res.comment) {
+                     if (res.post) {
                         return window.location.href = ""
                      }
                   })

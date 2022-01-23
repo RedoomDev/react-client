@@ -38,7 +38,7 @@ export function KonuPage() {
          <div className="container">
             <div className="main-area">
                <div>
-                  <KonuPosts tag="Gönderiler" posts={posts} key={slug}></KonuPosts>
+                  <KonuPosts tag="Gönderiler" posts={posts} key={slug} slug={slug}></KonuPosts>
                </div>
                <div>
                   <MostPosts></MostPosts>

@@ -71,3 +71,24 @@ export function PostReply({ username, icerik, reply, post }) {
 
    return result;
 }
+
+export function NewPost({ username, icerik, board, baslik }) {
+
+   var data = {
+      username,
+      icerik,
+      baslik
+   }
+
+   let replyPost = new Promise((resolve) => {
+      axios({
+         url: api_url + "/board/new/post/" + board,
+         method: 'POST',
+         data: qs.stringify(data)
+      }).then(res => resolve(res.data)).catch(err => resolve(errors.errorMessages.axiosError));
+   })
+
+   let result = replyPost;
+
+   return result;
+}

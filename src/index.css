@@ -96,9 +96,10 @@ body {
 }
 
 .fullscreen-modal-window {
-   position: absolute;
+   position: fixed;
    overflow-x: hidden;
    top: 0;
+   left: 0;
    height: 100vh;
    width: 100vw;
    background-color: rgb(0, 0, 0, .7);
