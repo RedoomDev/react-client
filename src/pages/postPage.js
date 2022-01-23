@@ -16,10 +16,13 @@ export function PostPage() {
 
    const [post, setPost] = useState([])
 
+
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)
 
    const [load, setLoad] = useState(true)
+
+   const [replyModal, setReplyModal] = useState(false)
 
    const { id } = useParams();
 
@@ -62,7 +65,7 @@ export function PostPage() {
                               <div className="post-comment">
                                  <div className="post-main">
                                     <div className="post-author">
-                                       <span className="post-author-name">Gönderen: {c.username}</span>
+                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => setReplyModal(true)}>[Yanıtla]</span></span>
                                     </div>
                                     <div className="post-content">
                                        {c.icerik}
@@ -97,7 +100,9 @@ export function PostPage() {
                </div>
             </div>
          </div>
-         <ReplyWindow></ReplyWindow>
+         {replyModal === true ? (
+            <ReplyWindow setModal={setReplyModal}></ReplyWindow>
+         ) : (<></>)}
       </div>
    )
 }

@@ -2,7 +2,7 @@ import { useState } from "react/cjs/react.development"
 
 
 
-export function ReplyWindow() {
+export function ReplyWindow({ setModal }) {
 
    const [username, setUsername] = useState("")
    const [icerik, setIcerik] = useState("")
@@ -12,6 +12,7 @@ export function ReplyWindow() {
       <div className="fullscreen-modal-window">
          <div className="window bg-zinc-900">
             <div className="form">
+               <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" onChange={(e) => {
                   setUsername(e.target.value)

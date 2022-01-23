@@ -122,6 +122,10 @@ body {
    outline: none;
 }
 
+.post-comment-button:hover{
+   color: cadetblue;
+}
+
 .form-button{
    margin-top: 10px;
    padding: 10px;
