@@ -13,7 +13,9 @@ export function IndexPage() {
          <div className="container">
             <div className="main-area">
                <Boards></Boards>
-               <MostPosts></MostPosts>
+               <div>
+                  <MostPosts></MostPosts>
+               </div>
             </div>
          </div>
       </div>
