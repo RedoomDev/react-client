@@ -5,6 +5,7 @@ import { Boards } from "../components/boards";
 import { KonuPosts } from "../components/konuPosts";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
+import { ReplyWindow } from "../components/repyWindow";
 import { BoardPostsContext } from "../contexts/boardPosts.context";
 import { GetPost } from "../fetch/fetchs";
 
@@ -96,6 +97,7 @@ export function PostPage() {
                </div>
             </div>
          </div>
+         <ReplyWindow></ReplyWindow>
       </div>
    )
 }
