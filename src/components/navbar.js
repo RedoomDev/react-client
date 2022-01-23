@@ -13,7 +13,7 @@ export function Navbar() {
                <div className="cizgi"></div>
                <div className="text-2xl text-center navbar-boards">
                   {value[0].map((a, idx) => (
-                     idx < 20 ? (<Link to={"/asdasd"} style={{ marginRight: 10 }}>{a.baslik}</Link>) : (<></>)
+                     idx < 5 ? (<Link to={"/" + a.slug} style={{ marginRight: 10 }}>{a.baslik}</Link>) : (<></>)
                   ))}
                </div>
                <div style={{ paddingBottom: 10 }}></div>
