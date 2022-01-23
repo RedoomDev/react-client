@@ -46,30 +46,46 @@ export function PostPage() {
                      </div>
                      <div className="post-main">
                         <div className="post-author">
-                           <span className="post-author-name">Gönderen: </span>
+                           <span className="post-author-name">Gönderen: {post.username}</span>
                         </div>
                         <div className="post-content">
                            {post.icerik}
                         </div>
                      </div>
-                     <div className="cizgi-2"></div>
                      <div className="post-head-text">Yorumlar: </div>
-                     <div className="cizgi-2"></div>
 
                      {post.comments ? (<>
 
                         {post.comments.map(c => (
-                           <div className="post-comment">
-                              <div className="post-main">
-                                 <div className="post-author">
-                                    <span className="post-author-name">Gönderen: {c.username}</span>
+                           !c.reply ? (
+                              <div className="post-comment">
+                                 <div className="post-main">
+                                    <div className="post-author">
+                                       <span className="post-author-name">Gönderen: {c.username}</span>
+                                    </div>
+                                    <div className="post-content">
+                                       {c.icerik}
+                                    </div>
                                  </div>
-                                 <div className="post-content">
-                                    {c.icerik}
-                                 </div>
+                                 {post.comments.map(r => (
+                                    r.reply === c.id ? (
+                                       <>
+                                          <div className="reply bg-zinc-800">
+                                             <div className="post-main">
+                                                <div className="post-author">
+                                                   <span className="post-author-name">Gönderen: {r.username}</span>
+                                                </div>
+                                                <div className="post-content">
+                                                   {r.icerik}
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </>
+                                    ) : (<></>)
+                                 ))}
+                                 <div className="cizgi-2"></div>
                               </div>
-                              <div className="cizgi-2"></div>
-                           </div>
+                           ) : (<></>)
                         ))}
                      </>) : (<></>)}
 
