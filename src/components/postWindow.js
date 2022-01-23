@@ -4,7 +4,7 @@ import { PostReply } from "../fetch/fetchs"
 
 
 
-export function ReplyWindow({ setModal, reply, post }) {
+export function PostWindow({ setModal, reply, post }) {
 
    const [username, setUsername] = useState("")
    const [icerik, setIcerik] = useState("")
@@ -30,7 +30,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                }}></textarea>
                <span>{icerik.length} / 5000</span>
                <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                  PostReply({ username, icerik, post }).then(res => {
+                  PostReply({ username, icerik, reply, post }).then(res => {
                      console.log(res)
                      if (res.message) {
                         setErr(res.message)

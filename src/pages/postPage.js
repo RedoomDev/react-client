@@ -56,7 +56,10 @@ export function PostPage() {
                            {post.icerik}
                         </div>
                      </div>
-                     <div className="post-head-text">Yorumlar: </div>
+                     <div className="post-head-text">Yorumlar: <span className="post-comment-button" type="button" onClick={() => {
+                        setReplyModal(true)
+                        setReply("")
+                     }}>[Yorum yap]</span></div>
 
                      {post.comments ? (<>
 

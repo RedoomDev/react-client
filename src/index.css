@@ -133,6 +133,10 @@ body {
    border-radius: 10px;
 }
 
+.post-main{
+   padding: 10px;
+}
+
 
 .form-button:hover {
    background-color: rgb(33, 33, 36);
@@ -141,7 +145,11 @@ body {
 @media (max-width: 1200px) {
    .main-area {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
+   }
+
+   .post-area{
+      width: auto;
    }
 
    .boards {
