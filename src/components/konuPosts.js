@@ -22,7 +22,7 @@ export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
                   {posts.map(posts => (
                      <Post post={posts}></Post>
                   ))}
-                  {posts.length + 1 > limit ? (
+                  {posts.length > limit ? (
                      <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={() => {
                         setLimit(limit + 20)
                         updatePosts(limit + 20)
