@@ -51,12 +51,13 @@ export function GetPost({ id, skip, limit }) {
    return result;
 }
 
-export function PostReply({ username, icerik, reply, post }) {
+export function PostReply({ username, icerik, reply, post, image }) {
 
    var data = {
       username,
       icerik,
-      reply
+      reply,
+      image
    }
 
    let replyPost = new Promise((resolve) => {
@@ -72,12 +73,13 @@ export function PostReply({ username, icerik, reply, post }) {
    return result;
 }
 
-export function NewPost({ username, icerik, board, baslik }) {
+export function NewPost({ username, icerik, board, baslik, image }) {
 
    var data = {
       username,
       icerik,
-      baslik
+      baslik,
+      image
    }
 
    let replyPost = new Promise((resolve) => {
