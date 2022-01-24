@@ -143,6 +143,12 @@ body {
    background-color: rgb(33, 33, 36);
 }
 
+.post-image{
+   border-radius: 20px;
+   margin: 10px;
+   margin-left: 0px;
+}
+
 @media (max-width: 1200px) {
    .window{
       width: 90%;

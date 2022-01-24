@@ -11,6 +11,7 @@ export function ReplyWindow({ setModal, reply, post }) {
    const [icerik, setIcerik] = useState("")
    const [err, setErr] = useState("")
 
+   const [click, setClick] = useState(false)
    const [images, setImages] = React.useState([]);
    const maxNumber = 1;
    const maxFileSize = 8000000;
@@ -78,21 +79,29 @@ export function ReplyWindow({ setModal, reply, post }) {
                      </div>
                   )}
                </ImageUploading>
-               <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                  if (!images[0]) {
-                     setErr("Lütfen Resim Ekleyiniz")
-                  } else {
-                     PostReply({ username, icerik, reply, post, image: images[0].data_url }).then(res => {
-                        console.log(res)
-                        if (res.message) {
-                           setErr(res.message)
-                        }
-                        if (res.comment) {
-                           return window.location.href = ""
-                        }
-                     })
-                  }
-               }}>Yorumu Gönder</div>
+               {click === false ? (
+                  <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
+                     if (!images[0]) {
+                        setErr("Lütfen Resim Ekleyiniz")
+                     } else {
+                        setClick(true)
+                        PostReply({ username, icerik, reply, post, image: images[0].data_url }).then(res => {
+                           if (res.message) {
+                              setErr(res.message)
+                              setClick(false)
+                           }
+                           if (res.comment) {
+                              return window.location.href = ""
+                           }
+                        })
+                     }
+
+                  }}>Yorumu Gönder</div>
+               ) : (
+                  <div className="form-button bg-zinc-800" type="button" disabled="true" onClick={(e) => {
+
+                  }}>Yorum Gönderiliyor</div>
+               )}
             </div>
          </div>
       </div>

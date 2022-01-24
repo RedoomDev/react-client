@@ -53,8 +53,8 @@ export function PostPage() {
                            <span className="post-author-name">Gönderen: {post.username}</span>
                         </div>
                         <div className="post-content">
-                           <img src={post.image} key={post.id} alt="" width="100" />
                            {post.icerik}
+                           <img className="post-image" loading="lazy" src={post.image} key={post.id} alt="" width="300vw" />
                         </div>
                      </div>
                      <div className="post-head-text">Yorumlar: <span className="post-comment-button" type="button" onClick={() => {
@@ -76,6 +76,7 @@ export function PostPage() {
                                     </div>
                                     <div className="post-content">
                                        {c.icerik}
+                                       <img className="post-image" src={c.image} loading="lazy" key={c.id} alt="" width="300vw" />
                                     </div>
                                  </div>
                                  {post.comments.map(r => (
@@ -88,6 +89,7 @@ export function PostPage() {
                                                 </div>
                                                 <div className="post-content">
                                                    {r.icerik}
+                                                   <img className="post-image" src={r.image} key={r.id} alt="" loading="lazy" width="300vw" />
                                                 </div>
                                              </div>
                                           </div>

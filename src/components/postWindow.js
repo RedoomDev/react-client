@@ -13,6 +13,7 @@ export function PostWindow({ setModal, board }) {
    const [err, setErr] = useState("")
 
    const [images, setImages] = React.useState([]);
+   const [click, setClick] = useState(false)
    const maxNumber = 1;
    const maxFileSize = 8000000;
 
@@ -83,20 +84,26 @@ export function PostWindow({ setModal, board }) {
                      </div>
                   )}
                </ImageUploading>
-               <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                  if (!images[0]) {
-                     setErr("Lütfen Resim Ekleyiniz")
-                  } else {
-                     NewPost({ username, icerik, board, baslik, image: images[0].data_url }).then(res => {
-                        if (res.message) {
-                           setErr(res.message)
-                        }
-                        if (res.post) {
-                           return window.location.href = ""
-                        }
-                     })
-                  }
-               }}>Yorumu Gönder</div>
+               {click === false ? (
+                  <div className="form-button bg-zinc-800" type="button" onClick={() => {
+                     if (!images[0]) {
+                        setErr("Lütfen Resim Ekleyiniz")
+                     } else {
+                        NewPost({ username, icerik, board, baslik, image: images[0].data_url }).then(res => {
+                           if (res.message) {
+                              setErr(res.message)
+                           }
+                           if (res.post) {
+                              return window.location.href = ""
+                           }
+                        })
+                     }
+                  }}>Yorumu Gönder</div>
+               ): (
+                  <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={() => {
+
+                  }}>Yorum Gönderiliyor...</div>
+               )}
             </div>
          </div>
       </div>
