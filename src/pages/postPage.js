@@ -53,6 +53,7 @@ export function PostPage() {
                            <span className="post-author-name">Gönderen: {post.username}</span>
                         </div>
                         <div className="post-content">
+                           <img src={post.image} alt="" width="100" />
                            {post.icerik}
                         </div>
                      </div>
