@@ -2,7 +2,7 @@ import { useState } from "react/cjs/react.development";
 import { Post } from "./post";
 import { PostWindow } from "./postWindow";
 
-export function KonuPosts({ tag, posts, slug }) {
+export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
 
 
    const [modal, setModal] = useState(false)
@@ -22,6 +22,12 @@ export function KonuPosts({ tag, posts, slug }) {
                   {posts.map(posts => (
                      <Post post={posts}></Post>
                   ))}
+                  {posts.length >= limit ? (
+                     <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={() => {
+                        setLimit(limit + 20)
+                        updatePosts(limit + 20)
+                     }}>Devamını yükle</div>
+                  ) : (<></>)}
                </div>
             </div>
          </div>

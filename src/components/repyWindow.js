@@ -98,7 +98,7 @@ export function ReplyWindow({ setModal, reply, post }) {
 
                   }}>Yorumu Gönder</div>
                ) : (
-                  <div className="form-button bg-zinc-800" type="button" disabled="true" onClick={(e) => {
+                  <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={(e) => {
 
                   }}>Yorum Gönderiliyor</div>
                )}

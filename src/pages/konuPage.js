@@ -15,7 +15,7 @@ export function KonuPage() {
 
    const [posts, setPosts] = useState([])
 
-   const [limit, setLimit] = useState(20)
+   const [limit, setLimit] = useState(2)
    const [skip, setSkip] = useState(0)
 
    const [load, setLoad] = useState(true)
@@ -32,13 +32,22 @@ export function KonuPage() {
       window.scrollTo(0, 0)
    }, [slug])
 
+   function updatePosts(limit) {
+      GetPostsFromBoard({ slug: slug, limit: limit, skip: skip }).then(res => {
+         if (res.data) {
+            setLoad(false)
+            setPosts(res.data)
+         }
+      })
+   }
+
    return (
       <div className="text-white font-mono">
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
                <div>
-                  <KonuPosts tag="Gönderiler" posts={posts} key={slug} slug={slug}></KonuPosts>
+                  <KonuPosts tag="Gönderiler" updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} key={slug} slug={slug}></KonuPosts>
                </div>
                <div>
                   <MostPosts></MostPosts>

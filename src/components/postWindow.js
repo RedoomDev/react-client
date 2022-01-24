@@ -89,20 +89,22 @@ export function PostWindow({ setModal, board }) {
                      if (!images[0]) {
                         setErr("Lütfen Resim Ekleyiniz")
                      } else {
+                        setClick(true)
                         NewPost({ username, icerik, board, baslik, image: images[0].data_url }).then(res => {
                            if (res.message) {
                               setErr(res.message)
+                              setClick(false)
                            }
                            if (res.post) {
                               return window.location.href = ""
                            }
                         })
                      }
-                  }}>Yorumu Gönder</div>
-               ): (
+                  }}>Gönderiyi Gönder</div>
+               ) : (
                   <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={() => {
 
-                  }}>Yorum Gönderiliyor...</div>
+                  }}>Gönderi Gönderiliyor...</div>
                )}
             </div>
          </div>
