@@ -13,7 +13,7 @@ import { GetPostsFromBoard } from "../fetch/fetchs";
 
 export function KonuPage() {
 
-   const [posts, setPosts] = useState([])
+   const [posts, setPosts] = useState()
 
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)
@@ -47,9 +47,11 @@ export function KonuPage() {
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
-               <div>
-                  <KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} key={slug} slug={slug}></KonuPosts>
-               </div>
+               {load === false ? (
+                  <div>
+                     <KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} key={slug} slug={slug}></KonuPosts>
+                  </div>
+               ) : (<></>)}
                <div>
                   <MostPosts></MostPosts>
                </div>
