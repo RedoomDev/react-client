@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Boards } from "../components/boards";
@@ -14,7 +14,7 @@ import Loader from "react-js-loader";
 
 export function KonuPage() {
 
-   const [posts, setPosts] = useState([])
+   const [posts, setPosts] = React.useState([])
 
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)

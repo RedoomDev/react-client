@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useState } from "react/cjs/react.development";
 import { Boards } from "../components/boards";
@@ -14,7 +14,7 @@ import { GetPost } from "../fetch/fetchs";
 
 export function PostPage() {
 
-   const [post, setPost] = useState({})
+   const [post, setPost] = React.useState({})
    const [reply, setReply] = useState("")
 
 
