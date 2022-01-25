@@ -7,13 +7,14 @@ import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import { BoardPostsContext } from "../contexts/boardPosts.context";
 import { GetPostsFromBoard } from "../fetch/fetchs";
+import Loader from "react-js-loader";
 
 
 
 
 export function KonuPage() {
 
-   const [posts, setPosts] = useState()
+   const [posts, setPosts] = useState([])
 
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)
@@ -47,11 +48,9 @@ export function KonuPage() {
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
-               {load === false ? (
-                  <div>
-                     <KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} key={slug} slug={slug}></KonuPosts>
-                  </div>
-               ) : (<></>)}
+               <div>
+                  <KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} key={slug} slug={slug}></KonuPosts>
+               </div>
                <div>
                   <MostPosts></MostPosts>
                </div>
