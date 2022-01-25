@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useState } from "react/cjs/react.development";
 import { Boards } from "../components/boards";
 import { KonuPosts } from "../components/konuPosts";
 import { MostPosts } from "../components/mostposts";
