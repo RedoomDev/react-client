@@ -7052,14 +7052,14 @@ react-dev-utils@^12.0.0:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^17.0.2:
-  version "17.0.2"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
-  integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
+react-dom@^18.0.0-rc.0-next-529dc3ce8-20220124:
+  version "18.0.0-rc.0-next-529dc3ce8-20220124"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0-rc.0-next-529dc3ce8-20220124.tgz#0d6bb1bb8a3f128d25370b60d83383905959e186"
+  integrity sha512-ULItqv9p8eLtExTHuvFZuAiMYzZRiODoxNpmu4Tn13gkB7XW9QOAC0RSkh4kP+KTRj0NNpkX67JRN1QkOJyD2w==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    scheduler "^0.20.2"
+    scheduler "0.21.0-rc.0-next-529dc3ce8-20220124"
 
 react-error-overlay@^6.0.10:
   version "6.0.10"
@@ -7161,10 +7161,10 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react@^17.0.2:
-  version "17.0.2"
-  resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
-  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
+react@^18.0.0-rc.0-next-529dc3ce8-20220124:
+  version "18.0.0-rc.0-next-529dc3ce8-20220124"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-rc.0-next-529dc3ce8-20220124.tgz#871254a00f0fae1b40f41cfb04b521f90d31205c"
+  integrity sha512-48qZJPjgeC27twT2lh3J2JX0SmjS0GIKVcjGDTCgmdSCSbuWpXBQXYWh0DNn5g/696krSJRgt893tMmcUQ45qw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
@@ -7459,10 +7459,10 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-scheduler@^0.20.2:
-  version "0.20.2"
-  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.20.2.tgz"
-  integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
+scheduler@0.21.0-rc.0-next-529dc3ce8-20220124:
+  version "0.21.0-rc.0-next-529dc3ce8-20220124"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0-rc.0-next-529dc3ce8-20220124.tgz#cecdf13a293efeb1f41bdfb35f17d2c5f59ef665"
+  integrity sha512-K2mur7PGzYpNJEAblbz5g7+0X0xaSPBNVLfAbSCZo56n4DliHoF4YJ7CQZu43MMv7lTQtSGCkFshuP92ZWRNGw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
