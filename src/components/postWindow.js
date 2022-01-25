@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { NewPost } from "../fetch/fetchs"
 import ImageUploading from 'react-images-uploading';
+import { useNavigate } from "react-router-dom";
 
 
 
 export function PostWindow({ setModal, board }) {
+   let navigate = useNavigate();
 
    const [username, setUsername] = useState("")
    const [baslik, setBaslik] = useState("")
@@ -95,7 +97,7 @@ export function PostWindow({ setModal, board }) {
                               setClick(false)
                            }
                            if (res.post) {
-                              return window.location.href = ""
+                              navigate('/post/' + res.post)
                            }
                         })
                      }
