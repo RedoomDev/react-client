@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Boards } from "../components/boards";
-import { KonuPosts } from "../components/konuPosts";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import { ReplyWindow } from "../components/repyWindow";
-import { BoardPostsContext } from "../contexts/boardPosts.context";
 import { GetPost } from "../fetch/fetchs";
 
 
@@ -13,7 +10,7 @@ import { GetPost } from "../fetch/fetchs";
 
 export function PostPage() {
 
-   const [post, setPost] = React.useState({})
+   const [post, setPost] = useState({})
    const [reply, setReply] = useState("")
 
 

@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Boards } from "../components/boards";
 import { KonuPosts } from "../components/konuPosts";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
-import { BoardPostsContext } from "../contexts/boardPosts.context";
 import { GetPostsFromBoard } from "../fetch/fetchs";
-import Loader from "react-js-loader";
 
 
 
 
 export function KonuPage() {
 
-   const [posts, setPosts] = React.useState([])
+   const [posts, setPosts] = useState([])
 
    const [limit, setLimit] = useState(20)
    const [skip, setSkip] = useState(0)

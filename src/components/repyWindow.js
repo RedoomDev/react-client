@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import { useState } from "react/cjs/react.development"
+import React, { useEffect, useState } from "react"
 import { PostReply } from "../fetch/fetchs"
 import ImageUploading from 'react-images-uploading';
 
