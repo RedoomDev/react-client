@@ -59,12 +59,13 @@ body {
 }
 
 .post-head-text {
-   font-size: 25px;
+   font-size: 20px;
 }
 
 .post-content {
    word-wrap: break-word;
 }
+
 
 .post-author-name {
    font-size: 20px;
@@ -144,8 +145,10 @@ body {
 }
 
 .post-image{
+   display: block;
    border-radius: 20px;
-   margin: 10px;
+   margin: 30px;
+   margin-top: 2px;
    margin-left: 0px;
 }
 

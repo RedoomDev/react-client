@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
+import PostMain from "../components/post/PostMain";
 import { ReplyWindow } from "../components/repyWindow";
 import { GetPost } from "../fetch/fetchs";
 
@@ -41,18 +43,10 @@ export function PostPage() {
                <div>
                   <div className="post-area bg-zinc-900">
                      <div className="post-head">
-                        <span className="post-head-text">{post.baslik}</span>
+                        <span className="post-head-text"><Link to={"/"}>Anasayfa</Link> / <Link to={"/konu/" + post.board_slug}>{post.board}</Link> / {post.baslik}</span>
                         <div className="cizgi-2"></div>
                      </div>
-                     <div className="post-main">
-                        <div className="post-author">
-                           <span className="post-author-name">Gönderen: {post.username}</span>
-                        </div>
-                        <div className="post-content">
-                           {post.icerik}
-                           <img className="post-image" loading="lazy" src={post.image} key={post.id} alt="" width="300vw" />
-                        </div>
-                     </div>
+                     <PostMain post={post}></PostMain>
                      <div className="post-head-text">Yorumlar: <span className="post-comment-button" type="button" onClick={() => {
                         setReplyModal(true)
                         setReply("")
@@ -63,33 +57,12 @@ export function PostPage() {
                         {post.comments.map(c => (
                            !c.reply ? (
                               <div className="post-comment">
-                                 <div className="post-main">
-                                    <div className="post-author">
-                                       <span className="post-author-name">Gönderen: {c.username} <span className="post-comment-button" type="button" onClick={() => {
-                                          setReplyModal(true)
-                                          setReply(c.id)
-                                       }}>[Yanıtla]</span></span>
-                                    </div>
-                                    <div className="post-content">
-                                       {c.icerik}
-                                       <img className="post-image" src={c.image} loading="lazy" key={c.id} alt="" width="300vw" />
-                                    </div>
-                                 </div>
+                                 <PostMain post={c} type={"reply"} setReply={setReply} setReplyModal={setReplyModal}></PostMain>
                                  {post.comments.map(r => (
                                     r.reply === c.id ? (
-                                       <>
-                                          <div className="reply bg-zinc-800">
-                                             <div className="post-main">
-                                                <div className="post-author">
-                                                   <span className="post-author-name">Gönderen: {r.username}</span>
-                                                </div>
-                                                <div className="post-content">
-                                                   {r.icerik}
-                                                   <img className="post-image" src={r.image} key={r.id} alt="" loading="lazy" width="300vw" />
-                                                </div>
-                                             </div>
-                                          </div>
-                                       </>
+                                       <div className="reply bg-zinc-800">
+                                          <PostMain post={r}></PostMain>
+                                       </div>
                                     ) : (<></>)
                                  ))}
                                  <div className="cizgi-2"></div>

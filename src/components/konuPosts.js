@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Post } from "./post";
 import { PostWindow } from "./postWindow";
 
@@ -11,9 +12,8 @@ export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
    return (
       <>
          <div className="boards bg-zinc-900">
-
             <div className="boards-head">
-               <span className="text-head">{tag} <span className="post-comment-button" type="button" onClick={() => {
+               <span className="text-head"><Link to="/">Anasayfa</Link> / {tag} <span className="post-comment-button" type="button" onClick={() => {
                   setBoard(slug)
                   setModal(true)
                }}>[Yeni Gönderi]</span></span>
