@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { PostReply } from "../fetch/fetchs"
 import ImageUploading from 'react-images-uploading';
-
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 
 export function ReplyWindow({ setModal, reply, post }) {
@@ -9,6 +9,17 @@ export function ReplyWindow({ setModal, reply, post }) {
    const [username, setUsername] = useState("")
    const [icerik, setIcerik] = useState("")
    const [err, setErr] = useState("")
+   const [token, setToken] = useState(null);
+   const captchaRef = useRef(null);
+
+
+   const onLoad = () => {
+      // this reaches out to the hCaptcha JS API and runs the
+      // execute function on it. you can use other functions as
+      // documented here:
+      // https://docs.hcaptcha.com/configuration#jsapi
+      captchaRef.current.execute();
+   };
 
    const [click, setClick] = useState(false)
    const [images, setImages] = React.useState([]);
@@ -78,6 +89,12 @@ export function ReplyWindow({ setModal, reply, post }) {
                      </div>
                   )}
                </ImageUploading>
+               <HCaptcha
+                  sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
+                  onLoad={onLoad}
+                  onVerify={setToken}
+                  ref={captchaRef}
+               />
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
                      if (!images[0]) {

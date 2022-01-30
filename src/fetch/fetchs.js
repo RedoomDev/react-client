@@ -51,13 +51,14 @@ export function GetPost({ id, skip, limit }) {
    return result;
 }
 
-export function PostReply({ username, icerik, reply, post, image }) {
+export function PostReply({ username, icerik, reply, post, image, token }) {
 
    var data = {
       username,
       icerik,
       reply,
-      image
+      image,
+      token
    }
 
    let replyPost = new Promise((resolve) => {
