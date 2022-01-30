@@ -101,7 +101,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                         setErr("Lütfen Resim Ekleyiniz")
                      } else {
                         setClick(true)
-                        PostReply({ username, icerik, reply, post, image: images[0].data_url }).then(res => {
+                        PostReply({ username, icerik, reply, post, image: images[0].data_url, token }).then(res => {
                            if (res.message) {
                               setErr(res.message)
                               setClick(false)
