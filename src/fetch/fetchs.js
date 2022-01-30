@@ -73,13 +73,14 @@ export function PostReply({ username, icerik, reply, post, image }) {
    return result;
 }
 
-export function NewPost({ username, icerik, board, baslik, image }) {
+export function NewPost({ username, icerik, board, baslik, image, token }) {
 
    var data = {
       username,
       icerik,
       baslik,
-      image
+      image,
+      token
    }
 
    let replyPost = new Promise((resolve) => {
