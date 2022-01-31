@@ -54,7 +54,6 @@ export function PostWindow({ setModal, board }) {
             baseURL = reader.result;
             resolve(baseURL);
          };
-         console.log(fileInfo);
       });
    };
 

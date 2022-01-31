@@ -53,7 +53,6 @@ export function ReplyWindow({ setModal, reply, post }) {
             baseURL = reader.result;
             resolve(baseURL);
          };
-         console.log(fileInfo);
       });
    };
 
