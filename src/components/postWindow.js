@@ -60,7 +60,6 @@ export function PostWindow({ setModal, board }) {
 
    function handlePaste(e) {
       if (e.clipboardData.files.length) {
-         let reader = new FileReader();
          const fileObject = e.clipboardData.files[0];
          getBase64(fileObject).then(basedata => {
             const data = { data_url: basedata, file: fileObject }
@@ -73,12 +72,11 @@ export function PostWindow({ setModal, board }) {
       }
    }
 
-   console.log(images)
 
    return (
       <div className="fullscreen-modal-window" onPaste={handlePaste}>
-         <div className="window bg-zinc-900">
-            <div className="form">
+         <div className="window bg-zinc-900" onPaste={handlePaste}>
+            <div className="form" onPaste={handlePaste}>
                <span className="post-comment-button" type="button" onClick={() => setModal(false)} >[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>

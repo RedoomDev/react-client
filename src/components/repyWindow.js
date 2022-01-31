@@ -36,10 +36,45 @@ export function ReplyWindow({ setModal, reply, post }) {
       window.scrollTo(0, 0)
    }, [])
 
+
+   const getBase64 = file => {
+      return new Promise(resolve => {
+         let fileInfo;
+         let baseURL = "";
+         // Make new FileReader
+         let reader = new FileReader();
+
+         // Convert the file to base64 text
+         reader.readAsDataURL(file);
+
+         // on reader load somthing...
+         reader.onload = () => {
+            // Make a fileInfo Object
+            baseURL = reader.result;
+            resolve(baseURL);
+         };
+         console.log(fileInfo);
+      });
+   };
+
+   function handlePaste(e) {
+      if (e.clipboardData.files.length) {
+         const fileObject = e.clipboardData.files[0];
+         getBase64(fileObject).then(basedata => {
+            const data = { data_url: basedata, file: fileObject }
+            if (images[0]) {
+               onImageChanege([data], 0)
+            } else {
+               setImages([data])
+            }
+         })
+      }
+   }
+
    return (
-      <div className="fullscreen-modal-window">
-         <div className="window bg-zinc-900">
-            <div className="form">
+      <div className="fullscreen-modal-window" onPaste={handlePaste}>
+         <div className="window bg-zinc-900" onPaste={handlePaste}>
+            <div className="form" onPaste={handlePaste}>
                <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
