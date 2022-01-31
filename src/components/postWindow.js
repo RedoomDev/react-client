@@ -38,11 +38,48 @@ export function PostWindow({ setModal, board }) {
       window.scrollTo(0, 0)
    }, [])
 
+   const getBase64 = file => {
+      return new Promise(resolve => {
+         let fileInfo;
+         let baseURL = "";
+         // Make new FileReader
+         let reader = new FileReader();
+
+         // Convert the file to base64 text
+         reader.readAsDataURL(file);
+
+         // on reader load somthing...
+         reader.onload = () => {
+            // Make a fileInfo Object
+            baseURL = reader.result;
+            resolve(baseURL);
+         };
+         console.log(fileInfo);
+      });
+   };
+
+   function handlePaste(e) {
+      if (e.clipboardData.files.length) {
+         let reader = new FileReader();
+         const fileObject = e.clipboardData.files[0];
+         getBase64(fileObject).then(basedata => {
+            const data = { data_url: basedata, file: fileObject }
+            if (images[0]) {
+               onImageChanege([data], 0)
+            } else {
+               setImages([data])
+            }
+         })
+      }
+   }
+
+   console.log(images)
+
    return (
-      <div className="fullscreen-modal-window">
+      <div className="fullscreen-modal-window" onPaste={handlePaste}>
          <div className="window bg-zinc-900">
             <div className="form">
-               <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
+               <span className="post-comment-button" type="button" onClick={() => setModal(false)} >[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" onChange={(e) => {
@@ -78,6 +115,7 @@ export function PostWindow({ setModal, board }) {
                      <div className="upload__image-wrapper">
                         {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
                         <button
+                           className="upload_image_button bg-zinc-800"
                            style={isDragging ? { color: 'red' } : undefined}
                            onClick={onImageUpload}
                            {...dragProps}
@@ -87,21 +125,25 @@ export function PostWindow({ setModal, board }) {
                         &nbsp;
                         {imageList.map((image, index) => (
                            <div key={index} className="image-item">
-                              <img src={image['data_url']} alt="" width="100" />
+                              <img src={image['data_url']} alt="" className="uploaded_image" />
                               <div className="image-item__btn-wrapper">
-                                 <button onClick={() => onImageUpdate(index)}>[değiştir]</button>
+                                 <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
                               </div>
                            </div>
                         ))}
                      </div>
                   )}
                </ImageUploading>
-               <HCaptcha
-                  sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
-                  onLoad={onLoad}
-                  onVerify={setToken}
-                  ref={captchaRef}
-               />
+               <center>
+                  <HCaptcha
+                     theme="dark"
+                     sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
+                     onLoad={onLoad}
+                     onVerify={setToken}
+                     ref={captchaRef}
+                  />
+               </center>
+               <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={() => {
                      if (!images[0]) {
