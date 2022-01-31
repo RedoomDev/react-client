@@ -71,6 +71,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                      <div className="upload__image-wrapper">
                         {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
                         <button
+                           className="upload_image_button bg-zinc-800"
                            style={isDragging ? { color: 'red' } : undefined}
                            onClick={onImageUpload}
                            {...dragProps}
@@ -80,21 +81,25 @@ export function ReplyWindow({ setModal, reply, post }) {
                         &nbsp;
                         {imageList.map((image, index) => (
                            <div key={index} className="image-item">
-                              <img src={image['data_url']} alt="" width="100" />
-                              <div className="image-item__btn-wrapper">
-                                 <button onClick={() => onImageUpdate(index)}>[değiştir]</button>
+                              <img src={image['data_url']} alt="" className="uploaded_image" />
+                              <div className="image-item__btn-wrapper" style={{ textAlign: 'center' }}>
+                                 <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
                               </div>
                            </div>
                         ))}
                      </div>
                   )}
                </ImageUploading>
-               <HCaptcha
-                  sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
-                  onLoad={onLoad}
-                  onVerify={setToken}
-                  ref={captchaRef}
-               />
+               <center>
+                  <HCaptcha
+                     theme="dark"
+                     sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
+                     onLoad={onLoad}
+                     onVerify={setToken}
+                     ref={captchaRef}
+                  />
+               </center>
+               <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
                      if (!images[0]) {
