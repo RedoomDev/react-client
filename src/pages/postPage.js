@@ -9,7 +9,6 @@ import { GetPost } from "../fetch/fetchs";
 
 
 
-
 export function PostPage() {
 
    const [post, setPost] = useState({})

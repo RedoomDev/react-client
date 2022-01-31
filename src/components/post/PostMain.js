@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import moment from 'moment';
+moment.locale('tr')
 
 
 export default function PostMain({ post, type, setReplyModal, setReply }) {
@@ -14,6 +16,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                   setReplyModal(true)
                   setReply(post.id)
                }}>[Yanıtla]</span></span>
+               <div className="post-author-name">Tarih: {moment(post.date).format("MM/DD/YYYY HH:mm")}</div>
             </div>
             <div className="post-content">
                <span className="post-content-text">{post.icerik}</span>
@@ -32,6 +35,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
          <div className="post-main">
             <div className="post-author">
                <span className="post-author-name">Gönderen: {post.username}</span>
+               <div className="post-author-name">Tarih: {moment(post.date).format("DD/MM/YYYY HH:mm")}</div>
             </div>
             <div className="post-content">
                <span className="post-content-text">{post.icerik}</span>
