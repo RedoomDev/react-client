@@ -16,16 +16,16 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                }}>[Yanıtla]</span></span>
             </div>
             <div className="post-content">
-               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" width="300vw" onClick={(e) => {
+               <span className="post-content-text">{post.icerik}</span>
+               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
                      setClick(true)
                   } else {
-                     imageRef.current.style.width = "25%"
+                     imageRef.current.style.width = "calc(100vw - 85vw)"
                      setClick(false)
                   }
                }} />
-               <span className="post-content-text">{post.icerik}</span>
             </div>
          </div>
       ) : (
@@ -34,16 +34,16 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                <span className="post-author-name">Gönderen: {post.username}</span>
             </div>
             <div className="post-content">
-               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" width="300vw" onClick={(e) => {
+               <span className="post-content-text">{post.icerik}</span>
+               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
                      setClick(true)
                   } else {
-                     imageRef.current.style.width = "25%"
+                     imageRef.current.style.width = "calc(100vw - 85vw)"
                      setClick(false)
                   }
                }} />
-               <span className="post-content-text">{post.icerik}</span>
             </div>
          </div>
       )
