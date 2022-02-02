@@ -8,9 +8,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
    const [authData, setAuthData] = useContext(AuthContext)
 
    const history = useHistory()
-
-      console.log(authData)
-
+   
    useEffect(() => {
       if(authData.admin === true){
          setFetch(true)
