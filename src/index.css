@@ -176,6 +176,30 @@ body {
    margin-bottom: 30px;
 }
 
+/* admin start */
+
+.admin-area{
+   display: grid;
+   grid-template-columns: 310px auto;
+}
+
+.admin-sidebar{
+   width: 300px;
+   background-color: rgb(24 24 27);
+   margin: 20px;
+   border-radius: 20px;
+   height: calc(100vh - 144px);
+}
+
+.admin-main{
+   margin: 20px;
+   height: calc(100vh - 144px);
+   overflow: auto;
+   border-radius: 20px;
+   background-color: rgb(24 24 27);
+}
+
+/* admin end */
 @media (max-width: 1200px) {
    .window{
       width: 90%;

@@ -1,12 +1,10 @@
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
 import { LoginPost } from "../../../fetch/fetchs"
 
 
 
 export default function AdminLogin() {
 
-   let history = useHistory()
 
    const [err, setErr] = useState("")
    const [email, setEmail] = useState("")

@@ -8,6 +8,8 @@ import { PrivateRoute } from './provider/private';
 import AdminIndex from './pages/admin';
 import { NotAuth } from './provider/notauth';
 import AdminLogin from './pages/admin/auth/login';
+import AdminSidebar from './pages/admin/sidebar/sidebar';
+import { Navbar } from './components/navbar';
 
 function App() {
 
@@ -17,10 +19,16 @@ function App() {
          <Route path="/" component={IndexPage} exact />
          <Route path="/konu/:slug" component={KonuPage} exact />
          <Route path="/post/:id" component={PostPage} exact />
+         <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
          <Switch>
-            <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
-            <PrivateRoute path="/admin" component={AdminIndex}></PrivateRoute>
-         </Switch>   
+            <div style={{ color: 'white' }}>
+               <Navbar></Navbar>
+               <div className='admin-area'>
+                  <AdminSidebar />
+                  <PrivateRoute path="/admin" component={AdminIndex}></PrivateRoute>
+               </div>
+            </div>
+         </Switch>
       </BrowserRouter>
    );
 }
