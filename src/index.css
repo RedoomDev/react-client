@@ -218,18 +218,32 @@ body {
    padding: 5px;
    margin-left: 0px;
    display: grid;
+   border-radius: 10px;
    grid-template-columns: auto 300px;
 }
 
 .admin-main-area-action-items{
    display: flex;
    flex-wrap: wrap;
+   float: right;
+   margin-right: 20px;
 }
+
 
 .admin-button{
    font-size: 20px;
+   height: auto;
    padding: 10px;
+   margin-left: 10px;
+   border-radius: 10px;
+}
+
+.delete{
    background-color: red;
+}
+
+.edit{
+   background-color: rgb(11, 134, 0);
 }
 
 .admin-main-area-item-head{

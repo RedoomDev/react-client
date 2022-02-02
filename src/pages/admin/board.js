@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { BoardContext } from "../../contexts/board.context"
 
 
@@ -12,6 +13,7 @@ export default function BoardIndex() {
       <div className="admin-main">
          <div className="post-head">
             <span className="post-head-text" style={{ fontSize: 25 }}>Konu Sistemi</span>
+            <Link className="post-head-text" style={{ fontSize: 25, float: 'right', marginRight: 20 }}>Yeni Board</Link>
             <div className="cizgi-2"></div>
          </div>
          <div className="admin-main-area">
@@ -28,10 +30,10 @@ export default function BoardIndex() {
                      </div>
                      <div>
                         <div className="admin-main-area-action-items">
-                           <div className="admin-button delete">
+                           <div className="admin-button delete" type="button">
                               Sil
                            </div>
-                           <div className="admin-button edit">
+                           <div className="admin-button edit" type="button">
                               Düzenle
                            </div>
                         </div>
