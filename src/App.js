@@ -16,18 +16,22 @@ function App() {
 
    return (
       <BrowserRouter>
+
          <Route path="/" component={IndexPage} exact />
          <Route path="/konu/:slug" component={KonuPage} exact />
          <Route path="/post/:id" component={PostPage} exact />
          <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
-         <Switch>
-            <div style={{ color: 'white' }}>
-               <Navbar></Navbar>
-               <div className='admin-area'>
-                  <AdminSidebar />
-                  <PrivateRoute path="/admin" component={AdminIndex}></PrivateRoute>
+         <Switch exact>
+            <PrivateRoute path="/admin*">
+               <div style={{ color: 'white' }}>
+                  <Navbar></Navbar>
+                  <div className='admin-area' exact>
+                     <AdminSidebar exact />
+                     <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
+                     <PrivateRoute path="/admin/board" component={AdminIndex} exact></PrivateRoute>
+                  </div>
                </div>
-            </div>
+            </PrivateRoute>
          </Switch>
       </BrowserRouter>
    );
