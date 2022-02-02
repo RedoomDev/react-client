@@ -10,6 +10,7 @@ import { NotAuth } from './provider/notauth';
 import AdminLogin from './pages/admin/auth/login';
 import AdminSidebar from './pages/admin/sidebar/sidebar';
 import { Navbar } from './components/navbar';
+import BoardIndex from './pages/admin/board';
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
                   <div className='admin-area' exact>
                      <AdminSidebar exact />
                      <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
-                     <PrivateRoute path="/admin/board" component={AdminIndex} exact></PrivateRoute>
+                     <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
                   </div>
                </div>
             </PrivateRoute>

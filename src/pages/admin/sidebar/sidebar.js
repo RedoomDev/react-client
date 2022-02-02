@@ -19,7 +19,7 @@ export default function AdminSidebar() {
                </Link>
             </div>
             <div>
-               <Link to="/admin" className="admin-sidebar-item">
+               <Link to="/admin/board" className="admin-sidebar-item">
                   Board Yönetimi
                </Link>
             </div>

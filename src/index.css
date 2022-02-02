@@ -213,6 +213,28 @@ body {
    padding: 5px;
 }
 
+.admin-main-area-item{
+   margin: 10px;
+   padding: 5px;
+   margin-left: 0px;
+   display: grid;
+   grid-template-columns: auto 300px;
+}
+
+.admin-main-area-action-items{
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.admin-button{
+   font-size: 20px;
+   padding: 10px;
+   background-color: red;
+}
+
+.admin-main-area-item-head{
+   font-size: 20px;
+}
 
 /* admin end */
 @media (max-width: 1200px) {
