@@ -41,7 +41,7 @@ export default function BoardIndex() {
                            }}>
                               Sil
                            </div>
-                           <Link className="admin-button edit" type="button">
+                           <Link to={"/admin/board/edit/" + a.slug} className="admin-button edit" type="button">
                               Düzenle
                            </Link>
                         </div>

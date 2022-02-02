@@ -12,6 +12,7 @@ import AdminSidebar from './pages/admin/sidebar/sidebar';
 import { Navbar } from './components/navbar';
 import BoardIndex from './pages/admin/board';
 import BoardNew from './pages/admin/board/new';
+import BoardEdit from './pages/admin/board/edit';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
                      <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
                      <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
                      <PrivateRoute path="/admin/board/new" component={BoardNew}></PrivateRoute>
+                     <PrivateRoute path="/admin/board/edit/:boardslug" component={BoardEdit}></PrivateRoute>
                   </div>
                </div>
             </PrivateRoute>

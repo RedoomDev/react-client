@@ -20,3 +20,19 @@ export function AdminPost({ endpoint, data }) {
    return result;
 
 }
+
+export function AdminGet({ endpoint }) {
+   let data = new Promise((resolve) => {
+      axios({
+         url: api_url + endpoint,
+         method: "GET",
+         headers: {
+            'authorization': localStorage.getItem("token")
+         }
+      }).then(res => {
+         resolve(res.data)
+      })
+   })
+
+   return data
+}
