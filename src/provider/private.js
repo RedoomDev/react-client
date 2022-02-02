@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Redirect, Route, useHistory } from "react-router-dom"
 import { AuthContext } from "../contexts/auth.context"
-import { PostContext } from "../contexts/post.context"
-import { GetAuthData } from "../fetch/fetchs"
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
 
