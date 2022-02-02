@@ -180,24 +180,39 @@ body {
 
 .admin-area{
    display: grid;
-   grid-template-columns: 310px auto;
+   grid-template-columns: 320px auto;
 }
 
 .admin-sidebar{
+   padding: 15px;
    width: 300px;
    background-color: rgb(24 24 27);
    margin: 20px;
    border-radius: 20px;
    height: calc(100vh - 144px);
+   overflow: auto;
 }
 
 .admin-main{
+   padding: 15px;
    margin: 20px;
    height: calc(100vh - 144px);
    overflow: auto;
    border-radius: 20px;
    background-color: rgb(24 24 27);
 }
+
+.admin-sidebar-items{
+   margin-top: 10px;
+}
+
+.admin-sidebar-item{
+   font-size: 20px;
+   padding-left: 0px;
+   border-radius: 5px;
+   padding: 5px;
+}
+
 
 /* admin end */
 @media (max-width: 1200px) {
