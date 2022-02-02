@@ -5,7 +5,6 @@ import { LoginPost } from "../../../fetch/fetchs"
 import { AdminPost } from "../fetchs"
 
 
-
 export default function UserNew() {
 
 

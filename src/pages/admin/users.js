@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { BoardContext } from "../../contexts/board.context"
 import { AdminGet, AdminPost } from "./fetchs"
-
+import moment from 'moment';
+moment.locale('tr')
 
 
 export default function UsersIndex() {
@@ -13,7 +14,7 @@ export default function UsersIndex() {
       AdminGet({
          endpoint: "/admin/user/get"
       }).then(res => {
-         if(res.data){
+         if (res.data) {
             setUsers(res.data)
          }
       })
@@ -38,19 +39,19 @@ export default function UsersIndex() {
                            {user.email}
                         </div>
                         <div className="admin-main-area-item-head">
-                           {user.date}
+                           {moment(user.date).format("MM/DD/YYYY HH:mm")}
                         </div>
                      </div>
                      <div>
                         <div className="admin-main-area-action-items">
-                           <div className="admin-button delete" type="button" 
-                           onClick={() => {
-                              AdminPost({ endpoint: "/admin/user/delete/" + user.id }).then(res => {
-                                 if(res.message){
-                                    window.location.href = ""
-                                 }
-                              })
-                           }}>
+                           <div className="admin-button delete" type="button"
+                              onClick={() => {
+                                 AdminPost({ endpoint: "/admin/user/delete/" + user.id }).then(res => {
+                                    if (res.message) {
+                                       window.location.href = ""
+                                    }
+                                 })
+                              }}>
                               Sil
                            </div>
                            <Link to={"/admin/user/edit/" + user.id} className="admin-button edit" type="button">
