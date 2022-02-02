@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { Navbar } from "../../../components/navbar"
 import { LoginPost } from "../../../fetch/fetchs"
 
@@ -14,10 +15,14 @@ export default function BoardNew() {
 
    return (
       <div style={{ color: 'white' }}>
-         <Navbar></Navbar>
-         <div className="window bg-zinc-900" style={{ color: 'white' }}>
-            <div className="form">
-               <div className="form-head">Giriş Yap</div>
+         <div className="admin-window bg-zinc-900" style={{ color: 'white' }}>
+            <div className="admin-form">
+               <div className="post-head">
+                  <span className="post-head-text" style={{ fontSize: 25 }}>Konu Sistemi</span>
+                  <Link to="/admin/board" className="post-head-text" style={{ fontSize: 25, float: 'right', marginRight: 20 }}>Geri Dön</Link>
+                  <div className="cizgi-2"></div>
+               </div>
+               <div style={{ height: 20 }}></div>
                <div className="post-error">{err}</div>
                <div className="form-label">E-Posta</div>
                <input className="form-input bg-zinc-800" onChange={(e) => {

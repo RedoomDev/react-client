@@ -114,6 +114,7 @@ body {
    border-radius: 10px;
 }
 
+
 .form {
    padding: 20px;
 }
@@ -136,7 +137,7 @@ body {
    border-radius: 10px;
 }
 
-.post-main{
+.post-main {
    padding: 10px;
 }
 
@@ -146,7 +147,7 @@ body {
 }
 
 
-.post-image{
+.post-image {
    width: calc(100vw - 85vw);
    display: block;
    border-radius: 15px;
@@ -155,12 +156,12 @@ body {
    margin-left: 0px;
 }
 
-.upload__image-wrapper{
+.upload__image-wrapper {
    border-radius: 10px;
    margin-bottom: 20px;
 }
 
-.upload_image_button{
+.upload_image_button {
    margin: 10px;
    width: calc(100% - 20px);
    height: auto;
@@ -169,26 +170,26 @@ body {
    border-radius: 10px;
 }
 
-.uploaded_image{
+.uploaded_image {
    width: calc(100% - 100px);
    margin: auto;
    border-radius: 15px;
    margin-bottom: 30px;
 }
 
-.form-head{
+.form-head {
    font-size: 30px;
    text-align: center;
 }
 
 /* admin start */
 
-.admin-area{
+.admin-area {
    display: grid;
    grid-template-columns: 320px auto;
 }
 
-.admin-sidebar{
+.admin-sidebar {
    padding: 15px;
    width: 300px;
    background-color: rgb(24 24 27);
@@ -198,7 +199,7 @@ body {
    overflow: auto;
 }
 
-.admin-main{
+.admin-main {
    padding: 15px;
    margin: 20px;
    height: calc(100vh - 144px);
@@ -207,18 +208,18 @@ body {
    background-color: rgb(24 24 27);
 }
 
-.admin-sidebar-items{
+.admin-sidebar-items {
    margin-top: 10px;
 }
 
-.admin-sidebar-item{
+.admin-sidebar-item {
    font-size: 20px;
    padding-left: 0px;
    border-radius: 5px;
    padding: 5px;
 }
 
-.admin-main-area-item{
+.admin-main-area-item {
    margin: 10px;
    padding: 5px;
    margin-left: 0px;
@@ -227,7 +228,7 @@ body {
    grid-template-columns: auto 300px;
 }
 
-.admin-main-area-action-items{
+.admin-main-area-action-items {
    display: flex;
    flex-wrap: wrap;
    float: right;
@@ -235,7 +236,7 @@ body {
 }
 
 
-.admin-button{
+.admin-button {
    font-size: 20px;
    height: auto;
    padding: 10px;
@@ -243,29 +244,41 @@ body {
    border-radius: 10px;
 }
 
-.delete{
+.delete {
    background-color: red;
 }
 
-.edit{
+.edit {
    background-color: rgb(11, 134, 0);
 }
 
-.admin-main-area-item-head{
+.admin-main-area-item-head {
    font-size: 20px;
+}
+
+.admin-form {
+   padding: 20px;
+}
+
+.admin-window {
+   width: auto;
+   margin: auto;
+   margin: 20px;
+   border-radius: 20px;
 }
 
 /* admin end */
 @media (max-width: 1200px) {
-   .window{
+   .window {
       width: 90%;
    }
+
    .main-area {
       display: flex;
       flex-direction: column;
    }
 
-   .post-area{
+   .post-area {
       width: auto;
    }
 

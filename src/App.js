@@ -11,6 +11,7 @@ import AdminLogin from './pages/admin/auth/login';
 import AdminSidebar from './pages/admin/sidebar/sidebar';
 import { Navbar } from './components/navbar';
 import BoardIndex from './pages/admin/board';
+import BoardNew from './pages/admin/board/new';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                      <AdminSidebar exact />
                      <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
                      <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
+                     <PrivateRoute path="/admin/board/new" component={BoardNew}></PrivateRoute>
                   </div>
                </div>
             </PrivateRoute>
