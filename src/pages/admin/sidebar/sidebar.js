@@ -24,7 +24,7 @@ export default function AdminSidebar() {
                </Link>
             </div>
             <div>
-               <Link to="/admin" className="admin-sidebar-item">
+               <Link to="/admin/users" className="admin-sidebar-item">
                   Kullanıcılar
                </Link>
             </div>

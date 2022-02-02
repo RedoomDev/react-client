@@ -13,6 +13,8 @@ import { Navbar } from './components/navbar';
 import BoardIndex from './pages/admin/board';
 import BoardNew from './pages/admin/board/new';
 import BoardEdit from './pages/admin/board/edit';
+import UsersIndex from './pages/admin/users';
+import UserNew from './pages/admin/user/new';
 
 function App() {
 
@@ -34,6 +36,8 @@ function App() {
                      <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
                      <PrivateRoute path="/admin/board/new" component={BoardNew}></PrivateRoute>
                      <PrivateRoute path="/admin/board/edit/:boardslug" component={BoardEdit}></PrivateRoute>
+                     <PrivateRoute path="/admin/users" component={UsersIndex} exact></PrivateRoute>
+                     <PrivateRoute path="/admin/user/new" component={UserNew} exact></PrivateRoute>
                   </div>
                </div>
             </PrivateRoute>
