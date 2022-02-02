@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { BoardContext } from "../../contexts/board.context"
+import { AdminPost } from "./fetchs"
 
 
 
@@ -30,12 +31,19 @@ export default function BoardIndex() {
                      </div>
                      <div>
                         <div className="admin-main-area-action-items">
-                           <div className="admin-button delete" type="button">
+                           <div className="admin-button delete" type="button" 
+                           onClick={() => {
+                              AdminPost({ endpoint: "/admin/board/delete/" + a.slug }).then(res => {
+                                 if(res.message){
+                                    window.location.href = ""
+                                 }
+                              })
+                           }}>
                               Sil
                            </div>
-                           <div className="admin-button edit" type="button">
+                           <Link className="admin-button edit" type="button">
                               Düzenle
-                           </div>
+                           </Link>
                         </div>
                      </div>
                   </div>

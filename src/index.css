@@ -252,6 +252,10 @@ body {
    background-color: rgb(11, 134, 0);
 }
 
+.edit:hover{
+   color: white;
+}
+
 .admin-main-area-item-head {
    font-size: 20px;
 }

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Navbar } from "../../../components/navbar"
 import { LoginPost } from "../../../fetch/fetchs"
+import { AdminPost } from "../fetchs"
 
 
 
@@ -9,8 +10,9 @@ export default function BoardNew() {
 
 
    const [err, setErr] = useState("")
-   const [email, setEmail] = useState("")
-   const [password, setPassword] = useState("")
+   const [slug, setSlug] = useState("")
+   const [baslik, setBaslik] = useState("")
+   const [about, setAbout] = useState("")
    const [click, setClick] = useState(false)
 
    return (
@@ -24,31 +26,37 @@ export default function BoardNew() {
                </div>
                <div style={{ height: 20 }}></div>
                <div className="post-error">{err}</div>
-               <div className="form-label">E-Posta</div>
+               <div className="form-label">Slug</div>
                <input className="form-input bg-zinc-800" onChange={(e) => {
-                  setEmail(e.target.value)
+                  setSlug(e.target.value)
                }}></input>
-               <div className="form-label">Şifre</div>
-               <input className="form-input bg-zinc-800" type="password" onChange={(e) => {
-                  setPassword(e.target.value)
+               <div className="form-label">Başlık</div>
+               <input className="form-input bg-zinc-800" onChange={(e) => {
+                  setBaslik(e.target.value)
+               }}></input>
+               <div className="form-label">Hakkında</div>
+               <input className="form-input bg-zinc-800" onChange={(e) => {
+                  setAbout(e.target.value)
                }}></input>
 
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={() => {
                      setClick(true)
-                     LoginPost({
-                        email,
-                        password
+                     AdminPost({
+                        endpoint: "/admin/board/create", data: {
+                           slug,
+                           baslik,
+                           about
+                        }
                      }).then(res => {
-                        if (res.token) {
-                           localStorage.setItem("token", res.token)
-                           window.location.href = ""
+                        if (res.board) {
+                           window.location.href = "/admin/board"
                         } else {
                            setErr(res.message)
                            setClick(false)
                         }
                      })
-                  }}>Giriş Yap</div>
+                  }}>Gönder</div>
                ) : (
                   <div className="form-button bg-zinc-800" type="button" aria-disabled="true">Sunucuya İstek Gönderiliyor...</div>
                )}
