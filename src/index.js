@@ -7,7 +7,7 @@ import Loader from "react-js-loader";
 import { AuthContext } from './contexts/auth.context';
 import { BoardContext } from './contexts/board.context';
 import { PostContext } from './contexts/post.context';
-import { GetBoards, GetPosts } from './fetch/fetchs';
+import { GetAuthData, GetBoards, GetPosts } from './fetch/fetchs';
 
 
 function Index() {
@@ -17,17 +17,28 @@ function Index() {
    const [authData, setAuthData] = useState({})
    const [fetch, setFetch] = useState(false)
 
+
+
    useEffect(() => {
-      GetBoards().then(res => {
-         if (res.data) {
-            setAllBoards(res.data)
-            GetPosts().then(res => {
-               if (res.data) {
-                  setPosts(res.data)
-                  setFetch(true)
-               }
+      GetAuthData().then(auth => {
+         if(auth.message === "success"){
+            setAuthData(auth.data)
+         }else{
+            setAuthData({
+               admin: false
             })
          }
+         GetBoards().then(res => {
+            if (res.data) {
+               setAllBoards(res.data)
+               GetPosts().then(res => {
+                  if (res.data) {
+                     setPosts(res.data)
+                     setFetch(true)
+                  }
+               })
+            }
+         })
       })
    }, [])
 

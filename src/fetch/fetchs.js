@@ -96,3 +96,33 @@ export function NewPost({ username, icerik, board, baslik, image, token }) {
 
    return result;
 }
+
+export function GetAuthData() {
+   let data = new Promise((resolve) => {
+      axios({
+         url: api_url + "/auth/me",
+         method: "GET",
+         headers: {
+            'authorization': localStorage.getItem("token")
+         }
+      }).then(res => {
+         resolve(res.data)
+      })
+   })
+
+   return data
+}
+
+export function LoginPost(data) {
+   let login = new Promise((resolve) => {
+      axios({
+         url: api_url + "/auth/login",
+         method: 'POST',
+         data: qs.stringify(data)
+      }).then(res => resolve(res.data)).catch(err => resolve(errors.errorMessages.axiosError));
+   })
+
+   let result = login;
+
+   return result;
+}

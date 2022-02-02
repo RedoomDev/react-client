@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react"
 import { NewPost } from "../fetch/fetchs"
 import ImageUploading from 'react-images-uploading';
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 
 
 export function PostWindow({ setModal, board }) {
-   let navigate = useNavigate();
+   let history = useHistory();
 
    const [username, setUsername] = useState("")
    const [baslik, setBaslik] = useState("")
@@ -153,7 +153,7 @@ export function PostWindow({ setModal, board }) {
                               setClick(false)
                            }
                            if (res.post) {
-                              navigate('/post/' + res.post)
+                              history.push('/post/' + res.post)
                            }
                         })
                      }
