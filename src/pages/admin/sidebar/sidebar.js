@@ -29,7 +29,7 @@ export default function AdminSidebar() {
                </Link>
             </div>
             <div>
-               <Link to="/admin" className="admin-sidebar-item">
+               <Link to="/admin/posts" className="admin-sidebar-item">
                   Postlar
                </Link>
             </div>
