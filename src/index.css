@@ -3,6 +3,14 @@ body {
    overflow-x: hidden;
 }
 
+.delete {
+   background-color: red;
+}
+
+.edit {
+   background-color: rgb(11, 134, 0);
+}
+
 .cizgi {
    height: 2px;
    background-color: white;
@@ -242,14 +250,6 @@ body {
    padding: 10px;
    margin-left: 10px;
    border-radius: 10px;
-}
-
-.delete {
-   background-color: red;
-}
-
-.edit {
-   background-color: rgb(11, 134, 0);
 }
 
 .edit:hover{

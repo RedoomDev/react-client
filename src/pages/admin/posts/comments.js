@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { BoardContext } from "../../contexts/board.context"
-import { AdminGet, AdminPost } from "./fetchs"
+import { BoardContext } from "../../../contexts/board.context"
+import { AdminGet, AdminPost } from "../fetchs"
 import moment from 'moment';
 moment.locale('tr')
 
 
-export default function PostsIndex() {
+export default function PostsCommentsIndex() {
 
    const [posts, setPosts] = useState([])
    const [skip, setSkip] = useState(0)

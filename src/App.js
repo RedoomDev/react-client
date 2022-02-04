@@ -17,6 +17,7 @@ import UsersIndex from './pages/admin/users';
 import PostsIndex from './pages/admin/posts';
 import UserNew from './pages/admin/user/new';
 import UserEdit from './pages/admin/user/edit';
+import PostsCommentsIndex from './pages/admin/posts/comments';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
                      <PrivateRoute path="/admin/user/new" component={UserNew} exact></PrivateRoute>
                      <PrivateRoute path="/admin/user/edit/:id" component={UserEdit}></PrivateRoute>
                      <PrivateRoute path="/admin/posts" component={PostsIndex}></PrivateRoute>
+                     <PrivateRoute path="/admin/post/comments/:id" component={PostsCommentsIndex}></PrivateRoute>
                   </div>
                </div>
             </PrivateRoute>
