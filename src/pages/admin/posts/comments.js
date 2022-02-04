@@ -28,14 +28,13 @@ export default function PostsCommentsIndex() {
 
    const loadmore = () => {
       AdminGet({
-         endpoint: "/admin/post/get/" + id + "?limit=" + Math.floor(limit * 1 + 1) + "&skip=" + Math.floor(skip * 1 + 1)
+         endpoint: "/admin/post/get/" + id + "?limit=" + limit + "&skip=" + Math.floor(skip * 1 + 10)
       }).then(res => {
          if (res.data) {
             setComments([...comments, ...res.data.comments])
          }
       })
-      setSkip(skip * 1 + 1)
-      setLimit(limit * 1 + 1)
+      setSkip(skip * 1 + 10)
    }
 
    return (
@@ -76,7 +75,7 @@ export default function PostsCommentsIndex() {
                      </div>
                   </div>
                ))}
-               {limit <= comments.length ? (
+               {skip < comments.length ? (
                   <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={loadmore}>Devamını yükle</div>
                ) : (
                   <></>
