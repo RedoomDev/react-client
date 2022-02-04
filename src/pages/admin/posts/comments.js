@@ -28,19 +28,21 @@ export default function PostsCommentsIndex() {
 
    const loadmore = () => {
       AdminGet({
-         endpoint: "/admin/post/get?limit=" + limit + "&skip=" + Math.floor(skip * 1 + 10)
+         endpoint: "/admin/post/get/" + id + "?limit=" + Math.floor(limit * 1 + 1) + "&skip=" + Math.floor(skip * 1 + 1)
       }).then(res => {
          if (res.data) {
             setComments([...comments, ...res.data.comments])
          }
       })
-      setSkip(skip + 10)
+      setSkip(skip * 1 + 1)
+      setLimit(limit * 1 + 1)
    }
 
    return (
       <div className="admin-main">
          <div className="post-head">
             <span className="post-head-text" style={{ fontSize: 25 }}>Konu Sistemi</span>
+            <Link to="/admin/posts" className="post-head-text" style={{ fontSize: 25, float: 'right', marginRight: 20 }}>Geri Dön</Link>
             <div className="cizgi-2"></div>
          </div>
          <div className="admin-main-area">
@@ -60,7 +62,7 @@ export default function PostsCommentsIndex() {
                            <div className="admin-button delete" type="button"
                               onClick={() => {
                                  AdminPost({
-                                    endpoint: "/admin/post/delete/" + comment.id
+                                    endpoint: "/admin/post/get/" + post + "/delete/comment/" + comment.id
                                  }).then(res => {
                                     window.location.href = ""
                                  })
@@ -74,7 +76,7 @@ export default function PostsCommentsIndex() {
                      </div>
                   </div>
                ))}
-               {skip <= comments.length ? (
+               {limit <= comments.length ? (
                   <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={loadmore}>Devamını yükle</div>
                ) : (
                   <></>
