@@ -12,6 +12,10 @@ export function ReplyWindow({ setModal, reply, post }) {
    const [token, setToken] = useState(null);
    const captchaRef = useRef(null);
 
+   useEffect(() => {
+      setUsername(localStorage.getItem("username") || "")
+   }, [])
+
 
    const onLoad = () => {
       // this reaches out to the hCaptcha JS API and runs the
@@ -77,7 +81,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
-               <input className="form-input bg-zinc-800" onChange={(e) => {
+               <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
                   setUsername(e.target.value)
                }}></input>
                <div className="form-label">İçerik</div>
@@ -124,15 +128,16 @@ export function ReplyWindow({ setModal, reply, post }) {
                      </div>
                   )}
                </ImageUploading>
-               <center>
-                  <HCaptcha
-                     theme="dark"
-                     sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
-                     onLoad={onLoad}
-                     onVerify={setToken}
-                     ref={captchaRef}
-                  />
-               </center>
+               <div>
+                  <center>
+                     <HCaptcha
+                        theme="dark"
+                        sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
+                        onVerify={setToken}
+                        ref={captchaRef}
+                     />
+                  </center>
+               </div>
                <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
@@ -142,10 +147,12 @@ export function ReplyWindow({ setModal, reply, post }) {
                         setClick(true)
                         PostReply({ username, icerik, reply, post, image: images[0].data_url, token }).then(res => {
                            if (res.message) {
+                              localStorage.setItem("username", username)
                               setErr(res.message)
                               setClick(false)
                            }
                            if (res.comment) {
+                              localStorage.setItem("username", username)
                               return window.location.href = ""
                            }
                         })

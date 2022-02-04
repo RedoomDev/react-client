@@ -21,6 +21,10 @@ export function PostWindow({ setModal, board }) {
    const maxNumber = 1;
    const maxFileSize = 8000000;
 
+   useEffect(() => {
+      setUsername(localStorage.getItem("username") || "")
+   }, [])
+
    const onLoad = () => {
       // this reaches out to the hCaptcha JS API and runs the
       // execute function on it. you can use other functions as
@@ -79,7 +83,7 @@ export function PostWindow({ setModal, board }) {
                <span className="post-comment-button" type="button" onClick={() => setModal(false)} >[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
-               <input className="form-input bg-zinc-800" onChange={(e) => {
+               <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
                   setUsername(e.target.value)
                }}></input>
                <div className="form-label">Başlık</div>
@@ -131,15 +135,16 @@ export function PostWindow({ setModal, board }) {
                      </div>
                   )}
                </ImageUploading>
-               <center>
-                  <HCaptcha
-                     theme="dark"
-                     sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
-                     onLoad={onLoad}
-                     onVerify={setToken}
-                     ref={captchaRef}
-                  />
-               </center>
+               <div>
+                  <center>
+                     <HCaptcha
+                        theme="dark"
+                        sitekey="b523111d-90f5-4b0d-b29d-a4df5d370eac"
+                        onVerify={setToken}
+                        ref={captchaRef}
+                     />
+                  </center>
+               </div>
                <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={() => {
@@ -149,10 +154,12 @@ export function PostWindow({ setModal, board }) {
                         setClick(true)
                         NewPost({ username, icerik, board, baslik, image: images[0].data_url, token: token }).then(res => {
                            if (res.message) {
+                              localStorage.setItem("username", username)
                               setErr(res.message)
                               setClick(false)
                            }
                            if (res.post) {
+                              localStorage.setItem("username", username)
                               history.push('/post/' + res.post)
                            }
                         })
