@@ -11,6 +11,14 @@ body {
    background-color: rgb(11, 134, 0);
 }
 
+.code_block{
+   background-color: rgb(34, 34, 34);
+   border-radius: 10px;
+   margin: 10px;
+   margin-left: 0;
+   margin-right: 0;
+}
+
 .cizgi {
    height: 2px;
    background-color: white;

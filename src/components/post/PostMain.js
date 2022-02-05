@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import moment from 'moment';
+import PostText from "./PostText";
 moment.locale('tr')
 
 
@@ -19,7 +20,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                <div className="post-author-name">Tarih: {moment(post.date).format("MM/DD/YYYY HH:mm")}</div>
             </div>
             <div className="post-content">
-               <span className="post-content-text">{post.icerik}</span>
+            <PostText text={post.icerik}></PostText>
                <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
@@ -38,7 +39,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                <div className="post-author-name">Tarih: {moment(post.date).format("DD/MM/YYYY HH:mm")}</div>
             </div>
             <div className="post-content">
-               <span className="post-content-text">{post.icerik}</span>
+               <PostText text={post.icerik}></PostText>
                <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
