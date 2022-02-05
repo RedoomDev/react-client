@@ -12,9 +12,9 @@ export function Navbar() {
                <div style={{ paddingTop: 10 }}></div>
                <Link to="/" className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</Link>
                <div className="cizgi"></div>
-               <div className="text-2xl text-center navbar-boards">
+               <div className="text-2xl navbar-boards">
                   {value[0].map((a, idx) => (
-                     idx < 5 ? (<Link to={"/konu/" + a.slug} style={{ marginRight: 10 }}>{a.baslik}</Link>) : (<></>)
+                     idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board bg-zinc-800">{a.baslik}</Link>) : (<></>)
                   ))}
                </div>
                <div style={{ paddingBottom: 10 }}></div>

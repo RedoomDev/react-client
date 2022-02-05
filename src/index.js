@@ -21,9 +21,9 @@ function Index() {
 
    useEffect(() => {
       GetAuthData().then(auth => {
-         if(auth.message === "success"){
+         if (auth.message === "success") {
             setAuthData(auth.data)
-         }else{
+         } else {
             setAuthData({
                admin: false
             })
@@ -47,13 +47,17 @@ function Index() {
          <BoardContext.Provider value={[allBoards, setAllBoards]}>
             <PostContext.Provider value={[posts, setPosts]}>
                <AuthContext.Provider value={[authData, setAuthData]}>
-                  {fetch === true ? (<App />) : (
-                     <div style={{ marginTop: '20%' }}>
-                        <Loader type="box-rectangular">
+                  <div className="redoom-bg" style={{ backgroundImage: "url(" + localStorage.getItem("background") + ")" }}>
+                     <div className='redoom-main'>
+                        {fetch === true ? (<App />) : (
+                           <div style={{ marginTop: '20%' }}>
+                              <Loader type="box-rectangular">
 
-                        </Loader>
+                              </Loader>
+                           </div>
+                        )}
                      </div>
-                  )}
+                  </div>
                </AuthContext.Provider>
             </PostContext.Provider>
          </BoardContext.Provider>
