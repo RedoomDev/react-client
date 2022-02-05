@@ -5,6 +5,7 @@ import remark2react from 'remark-react';
 import { RemarkH1, RemarkH2, RemarkH3, RemarkH4, RemarkH5, RemarkH6 } from './remark/htags';
 import { RemarkCode } from './remark/code';
 import remarkBreaks from 'remark-breaks'
+import { RemarkImg } from './remark/image';
 
 export default function PostText({ text }) {
 
@@ -22,7 +23,8 @@ export default function PostText({ text }) {
                 h4: RemarkH4,
                 h5: RemarkH5,
                 h6: RemarkH6,
-                code: RemarkCode
+                code: RemarkCode,
+                img: RemarkImg
             }
         })
         .processSync(text).result;
