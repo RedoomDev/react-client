@@ -18,9 +18,7 @@ export function IndexPage() {
          <div className="container">
             <div className="main-area">
                <div>
-                  <Boards tag="Konular"></Boards>
-                  <Boards tag="Bu Haftanın Pöpüler Konuları"></Boards>
-                  <Boards tag="En Çok Yeni Gönderi Alan Konular"></Boards>
+                  <Boards tag="En Çok Gönderi Alan Konular" type={"most"}></Boards>
                </div>
                <div>
                   <MostPosts></MostPosts>
