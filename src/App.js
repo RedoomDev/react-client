@@ -18,6 +18,7 @@ import PostsIndex from './pages/admin/posts';
 import UserNew from './pages/admin/user/new';
 import UserEdit from './pages/admin/user/edit';
 import PostsCommentsIndex from './pages/admin/posts/comments';
+import { SearchPage } from './pages/search';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
          <Route path="/" component={IndexPage} exact />
          <Route path="/konu/:slug" component={KonuPage} exact />
          <Route path="/post/:id" component={PostPage} exact />
+         <Route path="/search" component={SearchPage}></Route>
          <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
          <Switch exact>
             <PrivateRoute path="/admin*">

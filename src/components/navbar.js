@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BoardContext } from "../contexts/board.context";
 
 
 export function Navbar() {
 
    const [input, setInput] = useState("")
+   const history = useHistory()
 
    return (
       <BoardContext.Consumer>
@@ -18,6 +19,7 @@ export function Navbar() {
                      <input id="search-input" type="search" name="q" placeholder="Bir şeyler ara..." value={input} autocomplete="off"
                         pattern="[^'\x22]+" onChange={(e) => {
                            setInput(e.target.value)
+                           history.push("/search?query=" + e.target.value)
                         }} />
                      <Link to={"/search?query=" + input}>
                         <button id="search-button" type="button">Ara</button>
