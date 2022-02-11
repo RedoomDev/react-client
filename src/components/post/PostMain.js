@@ -20,8 +20,8 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                <div className="post-author-name">Tarih: {moment(post.date).format("MM/DD/YYYY HH:mm")}</div>
             </div>
             <div className="post-content">
-            <PostText text={post.icerik}></PostText>
-               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
+               <PostText text={post.icerik}></PostText>
+               <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? post.image + "?width=200&height=200" : post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
                      setClick(true)
@@ -40,7 +40,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
             </div>
             <div className="post-content">
                <PostText text={post.icerik}></PostText>
-               <img className="post-image" ref={imageRef} loading="lazy" src={post.image} key={post.id} alt="" onClick={(e) => {
+               <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? post.image + "?width=200&height=200" : post.image} key={post.id} alt="" onClick={(e) => {
                   if (click === false) {
                      imageRef.current.style.width = "100%"
                      setClick(true)
