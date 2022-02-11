@@ -7,7 +7,9 @@ import { RemarkCode } from './remark/code';
 import remarkBreaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import { RemarkImg } from './remark/image';
-var oembed = require('@agentofuser/remark-oembed')
+
+const remarkIframe = require('remark-iframes')
+const remark2rehype = require('remark-rehype')
 
 export default function PostText({ text }) {
 
@@ -15,7 +17,7 @@ export default function PostText({ text }) {
 
    let content = unified()
       .use(parse)
-      .use(oembed)
+
       .use(remarkGfm)
       .use(remarkBreaks)
       .use(remark2react, {
@@ -31,7 +33,8 @@ export default function PostText({ text }) {
             img: RemarkImg
          }
       })
-      .processSync(text + "  https://www.youtube.com/watch?v=GN0xHSk2P8Q").result;
+      .use(remark2rehype)
+      .processSync(text).result;
 
 
 

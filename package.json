@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@agentofuser/remark-oembed": "^1.0.4",
     "@hcaptcha/react-hcaptcha": "^1.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -23,7 +22,9 @@
     "remark": "^14.0.2",
     "remark-breaks": "^3.0.2",
     "remark-gfm": "^3.0.1",
+    "remark-iframes": "^4.0.5",
     "remark-react": "^9.0.1",
+    "remark-rehype": "^10.1.0",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
