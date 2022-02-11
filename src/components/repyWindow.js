@@ -141,23 +141,18 @@ export function ReplyWindow({ setModal, reply, post }) {
                <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
-                     if (!images[0]) {
-                        setErr("Lütfen Resim Ekleyiniz")
-                     } else {
-                        setClick(true)
-                        PostReply({ username, icerik, reply, post, image: images[0].data_url, token }).then(res => {
-                           if (res.message) {
-                              localStorage.setItem("username", username)
-                              setErr(res.message)
-                              setClick(false)
-                           }
-                           if (res.comment) {
-                              localStorage.setItem("username", username)
-                              return window.location.href = ""
-                           }
-                        })
-                     }
-
+                     setClick(true)
+                     PostReply({ username, icerik, reply, post, image: images[0] || "", token }).then(res => {
+                        if (res.message) {
+                           localStorage.setItem("username", username)
+                           setErr(res.message)
+                           setClick(false)
+                        }
+                        if (res.comment) {
+                           localStorage.setItem("username", username)
+                           return window.location.href = ""
+                        }
+                     })
                   }}>Yorumu Gönder</div>
                ) : (
                   <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={(e) => {

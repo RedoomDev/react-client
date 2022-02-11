@@ -12,9 +12,15 @@ export function MostPosts(params) {
                   <span className="text-head">En Yeni Gönderiler</span>
                   <div className="cizgi-2"></div>
                   <div className="boards-items">
-                     {value[0].map(post => (
-                        <MostPost post={post}></MostPost>
-                     ))}
+                     {value[0].map((post, idx) => {
+                        return (
+                           idx < 10 ? (
+                              <MostPost post={post}></MostPost>
+                           ) : (
+                              <></>
+                           )
+                        )
+                     })}
                   </div>
                </div>
             )}

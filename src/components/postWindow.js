@@ -148,22 +148,18 @@ export function PostWindow({ setModal, board }) {
                <div style={{ height: 30 }}></div>
                {click === false ? (
                   <div className="form-button bg-zinc-800" type="button" onClick={() => {
-                     if (!images[0]) {
-                        setErr("Lütfen Resim Ekleyiniz")
-                     } else {
-                        setClick(true)
-                        NewPost({ username, icerik, board, baslik, image: images[0].data_url, token: token }).then(res => {
-                           if (res.message) {
-                              localStorage.setItem("username", username)
-                              setErr(res.message)
-                              setClick(false)
-                           }
-                           if (res.post) {
-                              localStorage.setItem("username", username)
-                              history.push('/post/' + res.post)
-                           }
-                        })
-                     }
+                     setClick(true)
+                     NewPost({ username, icerik, board, baslik, image: images[0] || "", token: token }).then(res => {
+                        if (res.message) {
+                           localStorage.setItem("username", username)
+                           setErr(res.message)
+                           setClick(false)
+                        }
+                        if (res.post) {
+                           localStorage.setItem("username", username)
+                           history.push('/post/' + res.post)
+                        }
+                     })
                   }}>Gönderiyi Gönder</div>
                ) : (
                   <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={() => {
