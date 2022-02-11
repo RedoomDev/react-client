@@ -161,6 +161,12 @@ body {
 }
 
 
+.post-content-text a {
+   word-wrap: break-word;
+   color: rgb(144, 144, 207);
+}
+
+
 .post-author-name {
    font-size: 20px;
 }
