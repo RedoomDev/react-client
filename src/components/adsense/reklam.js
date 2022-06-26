@@ -9,7 +9,6 @@ export function ReklamPostContent() {
          style={{ display: 'block' }}
          format='fluid'
          responsive='true'
-         layoutKey='in-article'
       />
    )
 }
@@ -18,9 +17,9 @@ export function ReklamDikey() {
    return (
       <AdSense.Google
          client='ca-pub-7430781456275062'
-         slot='7708970950'
+         slot='7822605308'
          style={{ display: 'block' }}
-         format='autorelaxed'
+         format='auto'
          responsive='true'
       />
    )
@@ -30,9 +29,9 @@ export function ReklamNormal() {
    return (
       <AdSense.Google
          client='ca-pub-7430781456275062'
-         slot='4437894067'
+         slot='7708970950'
          style={{ display: 'block' }}
-         format='auto'
+         format='autorelaxed'
          responsive='true'
       />
    )

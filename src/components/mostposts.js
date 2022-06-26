@@ -26,7 +26,7 @@ export function MostPosts(params) {
                </div>
             )}
          </PostContext.Consumer>
-         <div style={{ height: 50 }}></div>
+         <div style={{ height: 15 }}></div>
          <ReklamDikey />
       </div>
    )

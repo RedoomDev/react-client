@@ -23,6 +23,7 @@ export function Boards({ tag, type }) {
                </div>
             )}
          </BoardContext.Consumer>
+         <div style={{ height: 15 }}></div>
          <ReklamNormal />
       </div>
    )
