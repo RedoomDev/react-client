@@ -370,6 +370,9 @@ body {
 
 /* admin end */
 @media (max-width: 1200px) {
+   .navbar-grid{
+      grid-template-columns: auto;
+   }
    #navbar-main{
       display: grid;
    }
