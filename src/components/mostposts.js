@@ -1,4 +1,5 @@
 import { PostContext } from "../contexts/post.context";
+import { ReklamDikey } from "./adsense/reklam";
 import { MostPost } from "./mospost";
 
 
@@ -25,6 +26,8 @@ export function MostPosts(params) {
                </div>
             )}
          </PostContext.Consumer>
+         <div style={{ height: 50 }}></div>
+         <ReklamDikey />
       </div>
    )
 }

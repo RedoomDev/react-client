@@ -13,8 +13,6 @@ const remark2rehype = require('remark-rehype')
 
 export default function PostText({ text }) {
 
-
-
    let content = unified()
       .use(parse)
 

@@ -108,8 +108,6 @@ body {
 .navbar-boards {
    display: flex;
    flex-wrap: wrap;
-   margin: auto;
-   max-width: 95vw;
 }
 
 .navbar-board{
@@ -118,6 +116,13 @@ body {
    margin-right: 10px;
    padding: 5px;
    border-radius: 10px;
+}
+
+.navbar-grid{
+   display: grid;
+   grid-template-columns: 1fr auto;
+   width: 95vw;
+   margin: auto;
 }
 
 .main-area {

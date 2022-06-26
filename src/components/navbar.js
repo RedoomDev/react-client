@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { BoardContext } from "../contexts/board.context";
+import SettingsWindow from "./settingsWindow";
 
 
 export function Navbar() {
 
    const [input, setInput] = useState("")
+   const [modal, setModal] = useState(false)
    const history = useHistory()
 
    return (
@@ -27,12 +29,22 @@ export function Navbar() {
                   </div>
                </div>
                <div className="cizgi"></div>
-               <div className="text-2xl navbar-boards">
-                  {value[0].map((a, idx) => (
-                     idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board bg-zinc-800">{a.baslik}</Link>) : (<></>)
-                  ))}
+               <div className="navbar-grid">
+                  <div className="text-2xl navbar-boards">
+                     {value[0].map((a, idx) => (
+                        idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board bg-zinc-800">{a.baslik}</Link>) : (<></>)
+                     ))}
+                  </div>
+                  <div className="text-2xl navbar-boards">
+                     <Link onClick={() => {
+                        setModal(true)
+                     }} className="navbar-board bg-zinc-800">Ayarlar</Link>
+                  </div>
                </div>
                <div style={{ paddingBottom: 10 }}></div>
+               {modal ? (
+                  <SettingsWindow setModal={setModal}></SettingsWindow>
+               ) : (<></>)}
             </div>
          )}
       </BoardContext.Consumer>

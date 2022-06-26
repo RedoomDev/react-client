@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import moment from 'moment';
 import PostText from "./PostText";
+import { ReklamPostContent } from "../adsense/reklam";
 moment.locale('tr')
 
 
@@ -17,7 +18,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                   setReplyModal(true)
                   setReply(post.id)
                }}>[Yanıtla]</span></span>
-               <div className="post-author-name">Tarih: {moment(post.date).format("MM/DD/YYYY HH:mm")}</div>
+               <div className="post-author-name">Tarih: {moment(post.date).fromNow()}</div>
             </div>
             <div className="post-content">
                <PostText text={post.icerik}></PostText>
@@ -36,7 +37,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
          <div className="post-main">
             <div className="post-author">
                <span className="post-author-name">Gönderen: {post.username}</span>
-               <div className="post-author-name">Tarih: {moment(post.date).format("DD/MM/YYYY HH:mm")}</div>
+               <div className="post-author-name">Tarih: {moment(post.date).fromNow()}</div>
             </div>
             <div className="post-content">
                <PostText text={post.icerik}></PostText>
@@ -49,6 +50,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                      setClick(false)
                   }
                }} />
+               <ReklamPostContent />
             </div>
          </div>
       )

@@ -19,6 +19,7 @@ import UserNew from './pages/admin/user/new';
 import UserEdit from './pages/admin/user/edit';
 import PostsCommentsIndex from './pages/admin/posts/comments';
 import { SearchPage } from './pages/search';
+import 'moment/locale/tr'
 
 function App() {
 
