@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ReklamNormal } from "./adsense/reklam";
 import { Post } from "./post";
 import { PostWindow } from "./postWindow";
 
@@ -22,6 +23,7 @@ export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
                   {posts.map(posts => (
                      <Post post={posts}></Post>
                   ))}
+                  <ReklamNormal />
                   {posts.length + 20 > limit ? (
                      <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={() => {
                         setLimit(limit + 20)

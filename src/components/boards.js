@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { BoardContext } from "../contexts/board.context";
+import { ReklamNormal } from "./adsense/reklam";
 import { Board } from "./board";
 
 
 export function Boards({ tag, type }) {
 
-   const [most, setMost] = useState([])
 
    return (
       <div className="boards bg-zinc-900">
@@ -24,6 +23,7 @@ export function Boards({ tag, type }) {
                </div>
             )}
          </BoardContext.Consumer>
+         <ReklamNormal />
       </div>
    )
 }
