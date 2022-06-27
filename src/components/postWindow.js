@@ -91,10 +91,10 @@ export function PostWindow({ setModal, board }) {
                   setBaslik(e.target.value)
                }}></input>
                <div className="form-label">İçerik</div>
-               <textarea className="form-input bg-zinc-800" maxLength="5000" onChange={(e) => {
+               <textarea className="form-input bg-zinc-800" maxLength="50000" onChange={(e) => {
                   setIcerik(e.target.value)
                }}></textarea>
-               <span>{icerik.length} / 5000</span>
+               <span>{icerik.length} / 50000</span>
 
                <ImageUploading
                   multiple
