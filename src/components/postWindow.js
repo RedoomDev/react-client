@@ -78,9 +78,9 @@ export function PostWindow({ setModal, board }) {
 
    return (
       <div className="fullscreen-modal-window" onPaste={handlePaste}>
-         <div className="window bg-zinc-900" onPaste={handlePaste}>
+         <div className="window" onPaste={handlePaste}>
             <div className="form" onPaste={handlePaste}>
-               <span className="post-comment-button" type="button" onClick={() => setModal(false)} >[Kapat]</span>
+               <span className="post-comment-button" onClick={() => setModal(false)} >[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
@@ -92,7 +92,7 @@ export function PostWindow({ setModal, board }) {
                }}></input>
                <div className="form-label">İçerik</div>
                <textarea className="form-input bg-zinc-800" maxLength="50000" onChange={(e) => {
-                  setIcerik(e.target.value)
+                  setIcerik(e.target.value)  
                }}></textarea>
                <span>{icerik.length} / 50000</span>
 
@@ -147,7 +147,7 @@ export function PostWindow({ setModal, board }) {
                </div>
                <div style={{ height: 30 }}></div>
                {click === false ? (
-                  <div className="form-button bg-zinc-800" type="button" onClick={() => {
+                  <div className="form-button bg-zinc-800" onClick={() => {
                      setClick(true)
                      NewPost({ username, icerik, board, baslik, image: images[0] || "", token: token }).then(res => {
                         if (res.message) {

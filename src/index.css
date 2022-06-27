@@ -3,15 +3,19 @@ body {
    overflow-x: hidden;
 }
 
-.redoom-bg{
+.redoom-bg {
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
    height: 100vh;
    width: 100vw;
    position: fixed;
+   overflow-y: auto;
 }
 
+a {
+   text-decoration: none;
+}
 
 /* search bar start */
 
@@ -67,9 +71,9 @@ body {
 
 /* search bar end */
 
-.redoom-main{
+.redoom-main {
    height: 100vh;
-   overflow: auto;
+   overflow-y: auto;
    overflow-x: hidden;
 }
 
@@ -81,7 +85,7 @@ body {
    background-color: rgb(11, 134, 0);
 }
 
-.code_block{
+.code_block {
    background-color: rgb(34, 34, 34);
    border-radius: 10px;
    margin: 10px;
@@ -110,15 +114,22 @@ body {
    flex-wrap: wrap;
 }
 
-.navbar-board{
+.navbar-board {
    margin-top: 10px;
    margin-top: 10px;
    margin-right: 10px;
    padding: 5px;
    border-radius: 10px;
+   color: rgb(226, 226, 226);
+   background-color: rgb(42, 42, 42);
+   text-decoration: none;
 }
 
-.navbar-grid{
+.navbar-board:hover {
+   color: white;
+}
+
+.navbar-grid {
    display: grid;
    grid-template-columns: 1fr auto;
    width: 95vw;
@@ -148,6 +159,7 @@ body {
    text-align: left;
 }
 
+
 .post-area {
    padding: 20px;
    margin: 10px;
@@ -165,6 +177,10 @@ body {
    word-wrap: break-word;
 }
 
+.post-content-text {
+   color: #dadada;
+   text-decoration: none;
+}
 
 .post-content-text a {
    word-wrap: break-word;
@@ -187,6 +203,7 @@ body {
    padding: 5px;
    border-radius: 5px;
    font-size: 18px;
+   text-decoration: none;
 }
 
 .text-head {
@@ -196,6 +213,8 @@ body {
 .board-item-about {
    word-wrap: break-word;
    font-size: 16px;
+   color: #e0e1e2;
+   text-decoration: none;
 }
 
 .post-comment {
@@ -219,6 +238,7 @@ body {
    margin-top: 100px;
    margin-bottom: 100px;
    border-radius: 10px;
+   background-color: #18181B;
 }
 
 
@@ -232,16 +252,19 @@ body {
    border-radius: 10px;
    color: white;
    outline: none;
+   background-color: #27272A;
 }
 
 .post-comment-button:hover {
    color: cadetblue;
+   cursor: pointer;
 }
 
 .form-button {
    margin-top: 10px;
    padding: 10px;
    border-radius: 10px;
+   cursor: pointer;
 }
 
 .post-main {
@@ -351,7 +374,7 @@ body {
    border-radius: 10px;
 }
 
-.edit:hover{
+.edit:hover {
    color: white;
 }
 
@@ -370,14 +393,19 @@ body {
    border-radius: 20px;
 }
 
+
+
 /* admin end */
 @media (max-width: 1200px) {
-   .navbar-grid{
+
+   .navbar-grid {
       grid-template-columns: auto;
    }
-   #navbar-main{
+
+   #navbar-main {
       display: grid;
    }
+
    #main {
       display: flex;
       float: right;
@@ -385,9 +413,11 @@ body {
       margin-left: 2.5vw;
       margin-bottom: 5px;
    }
-   #search-input{
+
+   #search-input {
       width: 100%;
    }
+
    .window {
       width: 90%;
    }

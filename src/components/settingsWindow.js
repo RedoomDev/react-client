@@ -21,7 +21,7 @@ export default function SettingsWindow({ setModal }) {
       <div className="fullscreen-modal-window">
          <div className="window bg-zinc-900">
             <div className="form">
-               <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
+               <span className="post-comment-button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="form-label">{message}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
@@ -38,7 +38,7 @@ export default function SettingsWindow({ setModal }) {
                   setFontsize(e.target.value)
                   setMessage("")
                }}></input>
-               <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
+               <div className="form-button bg-zinc-800" onClick={(e) => {
                   localStorage.setItem("background", background)
                   localStorage.setItem("username", username)
                   localStorage.setItem("contentTextSize", fontsize)

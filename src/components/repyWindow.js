@@ -78,7 +78,7 @@ export function ReplyWindow({ setModal, reply, post }) {
       <div className="fullscreen-modal-window" onPaste={handlePaste}>
          <div className="window bg-zinc-900" onPaste={handlePaste}>
             <div className="form" onPaste={handlePaste}>
-               <span className="post-comment-button" type="button" onClick={() => setModal(false)}>[Kapat]</span>
+               <span className="post-comment-button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
@@ -155,7 +155,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                      })
                   }}>Yorumu Gönder</div>
                ) : (
-                  <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={(e) => {
+                  <div className="form-button bg-zinc-800" aria-disabled="true" onClick={(e) => {
 
                   }}>Yorum Gönderiliyor</div>
                )}
