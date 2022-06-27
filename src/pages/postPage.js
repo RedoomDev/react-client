@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { ReklamPostContent } from "../components/adsense/reklam";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import PostMain from "../components/post/PostMain";
@@ -46,6 +47,7 @@ export function PostPage() {
                         <div className="cizgi-2"></div>
                      </div>
                      <PostMain post={post}></PostMain>
+                     <ReklamPostContent />
                      <div className="post-head-text">Yorumlar: <span className="post-comment-button" type="button" onClick={() => {
                         setReplyModal(true)
                         setReply("")

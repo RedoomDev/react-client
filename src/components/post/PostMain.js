@@ -44,7 +44,6 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                      }
                   }} />
                ) : (<></>)}
-               <ReklamPostContent />
             </div>
          </div>
       )

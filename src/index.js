@@ -20,6 +20,12 @@ function Index() {
 
 
    useEffect(() => {
+
+      var username = localStorage.getItem("username")
+      var contentTextSize = localStorage.getItem("contentTextSize")
+      if(!username) localStorage.setItem("username", "Anonymous")
+      if(!contentTextSize) localStorage.setItem("contentTextSize", "18")
+      
       GetAuthData().then(auth => {
          if (auth.message === "success") {
             setAuthData(auth.data)
