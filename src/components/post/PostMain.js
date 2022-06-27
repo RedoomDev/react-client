@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import moment from 'moment';
 import PostText from "./PostText";
 import { ReklamPostContent } from "../adsense/reklam";
+import { api_url } from "../../config";
 moment.locale('tr')
 
 
@@ -22,15 +23,6 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
             </div>
             <div className="post-content">
                <PostText text={post.icerik}></PostText>
-               <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? post.image + "?width=200&height=200" : post.image} key={post.id} alt="" onClick={(e) => {
-                  if (click === false) {
-                     imageRef.current.style.width = "100%"
-                     setClick(true)
-                  } else {
-                     imageRef.current.style.width = "calc(100vw - 85vw)"
-                     setClick(false)
-                  }
-               }} />
             </div>
          </div>
       ) : (
@@ -41,15 +33,17 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
             </div>
             <div className="post-content">
                <PostText text={post.icerik}></PostText>
-               <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? post.image + "?width=200&height=200" : post.image} key={post.id} alt="" onClick={(e) => {
-                  if (click === false) {
-                     imageRef.current.style.width = "100%"
-                     setClick(true)
-                  } else {
-                     imageRef.current.style.width = "calc(100vw - 85vw)"
-                     setClick(false)
-                  }
-               }} />
+               {post.image ? (
+                  <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? api_url + "/media/" + post.id + "/" + "?width=200&height=200" : api_url + "/media/" + post.id + "/"} key={post.id} alt="" onClick={(e) => {
+                     if (click === false) {
+                        imageRef.current.style.width = "100%"
+                        setClick(true)
+                     } else {
+                        imageRef.current.style.width = "calc(100vw - 85vw)"
+                        setClick(false)
+                     }
+                  }} />
+               ) : (<></>)}
                <ReklamPostContent />
             </div>
          </div>
