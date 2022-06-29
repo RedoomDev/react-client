@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { CurrentBoard } from "../contexts/currentBoard.context";
 import { ReklamNormal } from "./adsense/reklam";
 import { Post } from "./post";
@@ -12,7 +12,23 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
    const [board, setBoard] = useState(false)
    const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
 
+   const { type } = useParams()
+
    const [section, setSection] = useState("text")
+
+   useEffect(() => {
+      if (!type) {
+         setSection("text")
+      } else {
+         if (type === "text") {
+            setSection(type)
+         }
+
+         if (type === "image") {
+            setSection(type)
+         }
+      }
+   }, [])
 
    return (
       <>
@@ -28,8 +44,8 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
                <div className="cizgi-2"></div>
                <div className="boards-items">
                   <div className="section-menu">
-                     <div className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</div>
-                     <div className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</div>
+                     <Link to={"/konu/text/" + slug} className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</Link>
+                     <Link to={"/konu/image/" + slug} className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</Link>
                   </div>
 
                   {section === "text" ? (

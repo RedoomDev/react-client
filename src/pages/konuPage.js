@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { KonuPosts } from "../components/konuPosts";
 import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
+import { BoardContext } from "../contexts/board.context";
+import { CurrentBoard } from "../contexts/currentBoard.context";
 import { GetPostsFromBoard } from "../fetch/fetchs";
 
 
@@ -18,6 +20,10 @@ export function KonuPage() {
 
    const [load, setLoad] = useState(true)
 
+   const currentBaord = useContext(CurrentBoard)
+
+   const boards = useContext(BoardContext)
+
    const { slug } = useParams();
 
    useEffect(() => {
@@ -25,6 +31,7 @@ export function KonuPage() {
          if (res.data) {
             setLoad(false)
             setPosts(res.data)
+            currentBaord[1](boards[0].find(a => a.id === res.data[0].board).baslik)
          }
       })
       window.scrollTo(0, 0)

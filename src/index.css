@@ -526,6 +526,11 @@ a {
    text-align: center;
    font-size: 20px;
    cursor: pointer;
+   color: white;
+}
+
+.section-item:hover{
+   color: white;
 }
 
 /* admin end */

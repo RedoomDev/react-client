@@ -29,6 +29,7 @@ function App() {
 
          <Route path="/" component={IndexPage} exact />
          <Route path="/konu/:slug" component={KonuPage} exact />
+         <Route path="/konu/:type/:slug" component={KonuPage} exact />
          <Route path="/post/:id" component={PostPage} exact />
          <Route path="/search" component={SearchPage}></Route>
          <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
