@@ -51,13 +51,14 @@ function Index() {
    }, [])
 
    return (
-      <React.StrictMode>
-         <CurrentBoard.Provider value={[currentBoard, setCurrentBoard]}>
-            <BoardContext.Provider value={[allBoards, setAllBoards]}>
-               <PostContext.Provider value={[posts, setPosts]}>
-                  <AuthContext.Provider value={[authData, setAuthData]}>
-                     <div className="redoom-bg" style={{ backgroundImage: "url(" + localStorage.getItem("background") + ")" }}>
-                        <div className='redoom-main'>
+      <>
+
+         <div className='redoom-for-pc'>
+            <React.StrictMode>
+               <CurrentBoard.Provider value={[currentBoard, setCurrentBoard]}>
+                  <BoardContext.Provider value={[allBoards, setAllBoards]}>
+                     <PostContext.Provider value={[posts, setPosts]}>
+                        <AuthContext.Provider value={[authData, setAuthData]}>
                            {fetch === true ? (<App />) : (
                               <div style={{ marginTop: '20%' }}>
                                  <Loader type="box-rectangular">
@@ -65,22 +66,15 @@ function Index() {
                                  </Loader>
                               </div>
                            )}
-                        </div>
-                     </div>
-                     <div className="mobile-redoom">
-                        {fetch === true ? (<App />) : (
-                           <div style={{ marginTop: '20%' }}>
-                              <Loader type="box-rectangular">
+                        </AuthContext.Provider>
+                     </PostContext.Provider>
+                  </BoardContext.Provider>
+               </CurrentBoard.Provider>
+            </React.StrictMode>
+         </div>
 
-                              </Loader>
-                           </div>
-                        )}
-                     </div>
-                  </AuthContext.Provider>
-               </PostContext.Provider>
-            </BoardContext.Provider>
-         </CurrentBoard.Provider>
-      </React.StrictMode>
+      </>
+
    )
 }
 

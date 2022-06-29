@@ -515,12 +515,6 @@ a {
    border-radius: 20px;
 }
 
-
-.mobile-redoom {
-   display: none;
-}
-
-
 .section-menu {
    margin-top: 10px;
    margin-bottom: 10px;
@@ -544,14 +538,6 @@ a {
    .post-image {
       max-width: 100%;
       height: 100%;
-   }
-
-   .redoom-bg {
-      display: none;
-   }
-
-   .mobile-redoom {
-      display: block;
    }
 
    .navbar-grid {
