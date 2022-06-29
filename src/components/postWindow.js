@@ -16,10 +16,14 @@ export function PostWindow({ setModal, board }) {
    const [token, setToken] = useState(null);
    const captchaRef = useRef(null);
 
+   const [section, setSection] = useState("text")
+
    const [images, setImages] = React.useState([]);
    const [click, setClick] = useState(false)
    const maxNumber = 1;
    const maxFileSize = 8000000;
+
+
 
    useEffect(() => {
       setUsername(localStorage.getItem("username") || "")
@@ -90,51 +94,64 @@ export function PostWindow({ setModal, board }) {
                <input className="form-input bg-zinc-800" onChange={(e) => {
                   setBaslik(e.target.value)
                }}></input>
-               <div className="form-label">İçerik</div>
-               <textarea className="form-input bg-zinc-800" maxLength="50000" onChange={(e) => {
-                  setIcerik(e.target.value)  
-               }}></textarea>
-               <span>{icerik.length} / 50000</span>
 
-               <ImageUploading
-                  multiple
-                  value={images}
-                  onChange={onImageChanege}
-                  maxNumber={maxNumber}
-                  maxFileSize={maxFileSize}
-                  dataURLKey="data_url"
-               >
-                  {({
-                     imageList,
-                     onImageUpload,
-                     onImageUpdate,
-                     isDragging,
-                     dragProps,
-                     errors
-                  }) => (
-                     // write your building UI
-                     <div className="upload__image-wrapper">
-                        {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
-                        <button
-                           className="upload_image_button bg-zinc-800"
-                           style={isDragging ? { color: 'red' } : undefined}
-                           onClick={onImageUpload}
-                           {...dragProps}
-                        >
-                           [Tıkla ya da üstüne resim sürükle]
-                        </button>
-                        &nbsp;
-                        {imageList.map((image, index) => (
-                           <div key={index} className="image-item">
-                              <img src={image['data_url']} alt="" className="uploaded_image" />
-                              <div className="image-item__btn-wrapper">
-                                 <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
+               <div className="section-menu">
+                  <div className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</div>
+                  <div className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</div>
+               </div>
+
+               {section === "text" ? (
+                  <>
+                     <div className="form-label">İçerik</div>
+                     <textarea className="form-input bg-zinc-800" maxLength="50000" onChange={(e) => {
+                        setIcerik(e.target.value)
+                     }}></textarea>
+                     <span>{icerik.length} / 50000</span>
+                  </>
+               ) : (<></>)}
+
+               {section === "image" ? (
+                  <ImageUploading
+                     multiple
+                     value={images}
+                     onChange={onImageChanege}
+                     maxNumber={maxNumber}
+                     maxFileSize={maxFileSize}
+                     dataURLKey="data_url"
+                  >
+                     {({
+                        imageList,
+                        onImageUpload,
+                        onImageUpdate,
+                        isDragging,
+                        dragProps,
+                        errors
+                     }) => (
+                        // write your building UI
+                        <div className="upload__image-wrapper">
+                           {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
+                           <button
+                              className="upload_image_button bg-zinc-800"
+                              style={isDragging ? { color: 'red' } : undefined}
+                              onClick={onImageUpload}
+                              {...dragProps}
+                           >
+                              [Tıkla ya da üstüne resim sürükle]
+                           </button>
+                           &nbsp;
+                           {imageList.map((image, index) => (
+                              <div key={index} className="image-item">
+                                 <img src={image['data_url']} alt="" className="uploaded_image" />
+                                 <div className="image-item__btn-wrapper">
+                                    <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
+                                 </div>
                               </div>
-                           </div>
-                        ))}
-                     </div>
-                  )}
-               </ImageUploading>
+                           ))}
+                        </div>
+                     )}
+                  </ImageUploading>
+               ) : (<></>)}
+
                <div>
                   <center>
                      <HCaptcha
@@ -147,7 +164,7 @@ export function PostWindow({ setModal, board }) {
                </div>
                <div style={{ height: 30 }}></div>
                {click === false ? (
-                  <div className="form-button bg-zinc-800" onClick={() => {
+                  <div className="form-button" onClick={() => {
                      setClick(true)
                      NewPost({ username, icerik, board, baslik, image: images[0] || "", token: token }).then(res => {
                         if (res.message) {
@@ -162,7 +179,7 @@ export function PostWindow({ setModal, board }) {
                      })
                   }}>Gönderiyi Gönder</div>
                ) : (
-                  <div className="form-button bg-zinc-800" aria-disabled="true" onClick={() => {
+                  <div className="form-button" aria-disabled="true" onClick={() => {
 
                   }}>Gönderi Gönderiliyor...</div>
                )}

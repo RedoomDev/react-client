@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
 import { PostReply } from "../fetch/fetchs"
-import ImageUploading from 'react-images-uploading';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 
@@ -17,23 +16,10 @@ export function ReplyWindow({ setModal, reply, post }) {
    }, [])
 
 
-   const onLoad = () => {
-      // this reaches out to the hCaptcha JS API and runs the
-      // execute function on it. you can use other functions as
-      // documented here:
-      // https://docs.hcaptcha.com/configuration#jsapi
-      captchaRef.current.execute();
-   };
+
 
    const [click, setClick] = useState(false)
-   const [images, setImages] = React.useState([]);
-   const maxNumber = 1;
-   const maxFileSize = 8000000;
 
-   const onImageChanege = (imageList, addUpdateIndex) => {
-      // data for submit
-      setImages(imageList);
-   };
 
 
    useEffect(() => {
@@ -41,43 +27,10 @@ export function ReplyWindow({ setModal, reply, post }) {
    }, [])
 
 
-   const getBase64 = file => {
-      return new Promise(resolve => {
-         let fileInfo;
-         let baseURL = "";
-         // Make new FileReader
-         let reader = new FileReader();
-
-         // Convert the file to base64 text
-         reader.readAsDataURL(file);
-
-         // on reader load somthing...
-         reader.onload = () => {
-            // Make a fileInfo Object
-            baseURL = reader.result;
-            resolve(baseURL);
-         };
-      });
-   };
-
-   function handlePaste(e) {
-      if (e.clipboardData.files.length) {
-         const fileObject = e.clipboardData.files[0];
-         getBase64(fileObject).then(basedata => {
-            const data = { data_url: basedata, file: fileObject }
-            if (images[0]) {
-               onImageChanege([data], 0)
-            } else {
-               setImages([data])
-            }
-         })
-      }
-   }
-
    return (
-      <div className="fullscreen-modal-window" onPaste={handlePaste}>
-         <div className="window bg-zinc-900" onPaste={handlePaste}>
-            <div className="form" onPaste={handlePaste}>
+      <div className="fullscreen-modal-window">
+         <div className="window bg-zinc-900">
+            <div className="form">
                <span className="post-comment-button" onClick={() => setModal(false)}>[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
@@ -89,45 +42,6 @@ export function ReplyWindow({ setModal, reply, post }) {
                   setIcerik(e.target.value)
                }}></textarea>
                <span>{icerik.length} / 5000</span>
-               <ImageUploading
-                  multiple
-                  value={images}
-                  onChange={onImageChanege}
-                  maxNumber={maxNumber}
-                  maxFileSize={maxFileSize}
-                  dataURLKey="data_url"
-               >
-                  {({
-                     imageList,
-                     onImageUpload,
-                     onImageUpdate,
-                     isDragging,
-                     dragProps,
-                     errors
-                  }) => (
-                     // write your building UI
-                     <div className="upload__image-wrapper">
-                        {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
-                        <button
-                           className="upload_image_button bg-zinc-800"
-                           style={isDragging ? { color: 'red' } : undefined}
-                           onClick={onImageUpload}
-                           {...dragProps}
-                        >
-                           [Tıkla ya da üstüne resim sürükle]
-                        </button>
-                        &nbsp;
-                        {imageList.map((image, index) => (
-                           <div key={index} className="image-item">
-                              <img src={image['data_url']} alt="" className="uploaded_image" />
-                              <div className="image-item__btn-wrapper" style={{ textAlign: 'center' }}>
-                                 <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
-                              </div>
-                           </div>
-                        ))}
-                     </div>
-                  )}
-               </ImageUploading>
                <div>
                   <center>
                      <HCaptcha
@@ -142,7 +56,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                {click === false ? (
                   <div className="form-button bg-zinc-800" onClick={(e) => {
                      setClick(true)
-                     PostReply({ username, icerik, reply, post, image: images[0] || "", token }).then(res => {
+                     PostReply({ username, icerik, reply, post, token }).then(res => {
                         if (res.message) {
                            localStorage.setItem("username", username)
                            setErr(res.message)

@@ -123,13 +123,14 @@ a {
    color: rgb(226, 226, 226);
    background-color: rgb(42, 42, 42);
    text-decoration: none;
+   font-size: 20px;
 }
 
 .navbar-board:hover {
    color: white;
 }
 
-.text-5xl{
+.text-5xl {
    font-size: 50px;
    color: white;
 }
@@ -153,6 +154,7 @@ a {
    margin-top: 20px;
    border-radius: 10px;
    padding: 20px;
+   background-color: rgb(24 24 27);
 }
 
 .boards {
@@ -178,6 +180,7 @@ a {
 
 .post-head-text {
    font-size: 24px;
+   color: white;
 }
 
 .post-content {
@@ -201,8 +204,16 @@ a {
 
 
 .reply {
-   padding: 10px;
-   padding-left: 30px;
+   padding-left: 20px;
+   background-color: rgb(39 39 42);
+   display: grid;
+   grid-template-columns: auto 1fr;
+}
+
+.reply-line {
+   margin: 10px;
+   background-color: white;
+   width: 2px;
 }
 
 .board-item {
@@ -212,6 +223,17 @@ a {
    font-size: 18px;
    text-decoration: none;
    background-color: rgb(39 39 42);
+   color: white;
+}
+
+.board-item:hover {
+   background-color: rgb(47, 47, 53);
+   transition: 0.2s;
+}
+
+.board-item-head {
+   color: white;
+   font-size: 24px;
 }
 
 .text-head {
@@ -263,6 +285,7 @@ a {
    color: white;
    outline: none;
    background-color: #27272A;
+   border: none;
 }
 
 .post-comment-button:hover {
@@ -275,6 +298,7 @@ a {
    padding: 10px;
    border-radius: 10px;
    cursor: pointer;
+   background-color: rgb(39 39 42);
 }
 
 .post-main {
@@ -308,6 +332,9 @@ a {
    padding: 20px;
    text-align: center;
    border-radius: 10px;
+   background-color: rgb(39 39 42);
+   color: white;
+   border: none;
 }
 
 .uploaded_image {
@@ -409,14 +436,27 @@ a {
 }
 
 
+.section-menu{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+.section-item{
+   text-align: center;
+   font-size: 20px;
+   cursor: pointer;
+}
+
 /* admin end */
 @media (max-width: 1200px) {
 
-   .redoom-bg{
+   .redoom-bg {
       display: none;
    }
 
-   .mobile-redoom{
+   .mobile-redoom {
       display: block;
    }
 

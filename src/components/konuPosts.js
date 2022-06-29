@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CurrentBoard } from "../contexts/currentBoard.context";
 import { ReklamNormal } from "./adsense/reklam";
 import { Post } from "./post";
 import { PostWindow } from "./postWindow";
 
-export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
+export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
 
 
    const [modal, setModal] = useState(false)
    const [board, setBoard] = useState(false)
+   const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
 
    return (
       <>
          <div className="boards">
             <div className="boards-head">
                <div className="text-head">
-                  <span><Link to="/">Anasayfa</Link> / {tag}</span>
+                  <span><Link className="text-white"  to="/">Anasayfa</Link> / {currentBaord}</span>
                   <span className="post-comment-button new-post" onClick={() => {
                      setBoard(slug)
                      setModal(true)

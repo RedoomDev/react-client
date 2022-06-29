@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { ReklamPostContent } from "../components/adsense/reklam";
@@ -6,6 +6,7 @@ import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import PostMain from "../components/post/PostMain";
 import { ReplyWindow } from "../components/repyWindow";
+import { CurrentBoard } from "../contexts/currentBoard.context";
 import { GetPost } from "../fetch/fetchs";
 
 
@@ -22,6 +23,7 @@ export function PostPage() {
    const [load, setLoad] = useState(true)
 
    const [replyModal, setReplyModal] = useState(false)
+   const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
 
    const { id } = useParams();
 
@@ -43,7 +45,7 @@ export function PostPage() {
                <div>
                   <div className="post-area">
                      <div className="post-head">
-                        <span className="post-head-text"><Link to={"/"}>Anasayfa</Link> / <Link to={"/konu/" + post.board_slug}>{post.board}</Link> / {post.baslik}</span>
+                        <span className="post-head-text"><Link className="text-white" to={"/"}>Anasayfa</Link> / <Link className="text-white" to={"/konu/" + post.board_slug} onClick={() => { setCurrentBoard(post.board) }}>{post.board}</Link> / {post.baslik}</span>
                         <div className="cizgi-2"></div>
                      </div>
                      <PostMain post={post}></PostMain>
@@ -61,7 +63,8 @@ export function PostPage() {
                                  <PostMain post={c} type={"reply"} setReply={setReply} setReplyModal={setReplyModal}></PostMain>
                                  {post.comments.map(r => (
                                     r.reply === c.id ? (
-                                       <div className="reply bg-zinc-800">
+                                       <div className="reply">
+                                          <div className="reply-line"></div>
                                           <PostMain post={r}></PostMain>
                                        </div>
                                     ) : (<></>)

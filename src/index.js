@@ -8,12 +8,14 @@ import { AuthContext } from './contexts/auth.context';
 import { BoardContext } from './contexts/board.context';
 import { PostContext } from './contexts/post.context';
 import { GetAuthData, GetBoards, GetPosts } from './fetch/fetchs';
+import { CurrentBoard } from './contexts/currentBoard.context';
 
 
 function Index() {
 
    const [allBoards, setAllBoards] = useState([])
    const [posts, setPosts] = useState([])
+   const [currentBoard, setCurrentBoard] = useState("")
    const [authData, setAuthData] = useState({})
    const [fetch, setFetch] = useState(false)
 
@@ -50,11 +52,22 @@ function Index() {
 
    return (
       <React.StrictMode>
-         <BoardContext.Provider value={[allBoards, setAllBoards]}>
-            <PostContext.Provider value={[posts, setPosts]}>
-               <AuthContext.Provider value={[authData, setAuthData]}>
-                  <div className="redoom-bg" style={{ backgroundImage: "url(" + localStorage.getItem("background") + ")" }}>
-                     <div className='redoom-main'>
+         <CurrentBoard.Provider value={[currentBoard, setCurrentBoard]}>
+            <BoardContext.Provider value={[allBoards, setAllBoards]}>
+               <PostContext.Provider value={[posts, setPosts]}>
+                  <AuthContext.Provider value={[authData, setAuthData]}>
+                     <div className="redoom-bg" style={{ backgroundImage: "url(" + localStorage.getItem("background") + ")" }}>
+                        <div className='redoom-main'>
+                           {fetch === true ? (<App />) : (
+                              <div style={{ marginTop: '20%' }}>
+                                 <Loader type="box-rectangular">
+
+                                 </Loader>
+                              </div>
+                           )}
+                        </div>
+                     </div>
+                     <div className="mobile-redoom">
                         {fetch === true ? (<App />) : (
                            <div style={{ marginTop: '20%' }}>
                               <Loader type="box-rectangular">
@@ -63,19 +76,10 @@ function Index() {
                            </div>
                         )}
                      </div>
-                  </div>
-                  <div className="mobile-redoom">
-                     {fetch === true ? (<App />) : (
-                        <div style={{ marginTop: '20%' }}>
-                           <Loader type="box-rectangular">
-
-                           </Loader>
-                        </div>
-                     )}
-                  </div>
-               </AuthContext.Provider>
-            </PostContext.Provider>
-         </BoardContext.Provider>
+                  </AuthContext.Provider>
+               </PostContext.Provider>
+            </BoardContext.Provider>
+         </CurrentBoard.Provider>
       </React.StrictMode>
    )
 }

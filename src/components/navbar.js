@@ -30,15 +30,15 @@ export function Navbar() {
                </div>
                <div className="cizgi"></div>
                <div className="navbar-grid">
-                  <div className="text-2xl navbar-boards">
+                  <div className="navbar-boards">
                      {value[0].map((a, idx) => (
-                        idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board bg-zinc-800">{a.baslik}</Link>) : (<></>)
+                        idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board">{a.baslik}</Link>) : (<></>)
                      ))}
                   </div>
-                  <div className="text-2xl navbar-boards">
+                  <div className="navbar-boards">
                      <Link onClick={() => {
                         setModal(true)
-                     }} className="navbar-board bg-zinc-800">Ayarlar</Link>
+                     }} className="navbar-board">Ayarlar</Link>
                   </div>
                </div>
                <div style={{ paddingBottom: 10 }}></div>
