@@ -5,7 +5,7 @@ export function Board({ board }) {
 
    return (
       <Link to={"/konu/" + board.slug}>
-         <div className="board-item bg-zinc-800">
+         <div className="board-item">
             <div className="board-item-head">{board.baslik}</div>
             <div className="board-item-about">{board.about}</div>
          </div>

@@ -21,12 +21,6 @@ export default function PostText({ text }) {
       <div style={{ marginTop: 10 }}>&#160;&#160;{match}</div>
    ));
 
-   replacedText = reactStringReplace(replacedText, /\*\*(.*)\*\*/, (match, i) => {
-      return (
-         <strong>{match}</strong>
-      )
-   })
-
    return (
       <span className="post-content-text" style={{ fontSize: Number(localStorage.getItem("contentTextSize")) || 18 }} id="preview">
          &#160;&#160;{replacedText}

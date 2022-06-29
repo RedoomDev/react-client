@@ -162,7 +162,7 @@ export function PostWindow({ setModal, board }) {
                      })
                   }}>Gönderiyi Gönder</div>
                ) : (
-                  <div className="form-button bg-zinc-800" type="button" aria-disabled="true" onClick={() => {
+                  <div className="form-button bg-zinc-800" aria-disabled="true" onClick={() => {
 
                   }}>Gönderi Gönderiliyor...</div>
                )}

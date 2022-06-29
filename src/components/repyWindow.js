@@ -140,7 +140,7 @@ export function ReplyWindow({ setModal, reply, post }) {
                </div>
                <div style={{ height: 30 }}></div>
                {click === false ? (
-                  <div className="form-button bg-zinc-800" type="button" onClick={(e) => {
+                  <div className="form-button bg-zinc-800" onClick={(e) => {
                      setClick(true)
                      PostReply({ username, icerik, reply, post, image: images[0] || "", token }).then(res => {
                         if (res.message) {

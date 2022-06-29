@@ -15,7 +15,7 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
       type === "reply" ? (
          <div className="post-main">
             <div className="post-author">
-               <span className="post-author-name">Gönderen: {post.username} <span className="post-comment-button" type="button" onClick={() => {
+               <span className="post-author-name">Gönderen: {post.username} <span className="post-comment-button" onClick={() => {
                   setReplyModal(true)
                   setReply(post.id)
                }}>[Yanıtla]</span></span>

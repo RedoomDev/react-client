@@ -41,14 +41,14 @@ export function PostPage() {
          <div className="container">
             <div className="main-area">
                <div>
-                  <div className="post-area bg-zinc-900">
+                  <div className="post-area">
                      <div className="post-head">
                         <span className="post-head-text"><Link to={"/"}>Anasayfa</Link> / <Link to={"/konu/" + post.board_slug}>{post.board}</Link> / {post.baslik}</span>
                         <div className="cizgi-2"></div>
                      </div>
                      <PostMain post={post}></PostMain>
                      <ReklamPostContent />
-                     <div className="post-head-text">Yorumlar: <span className="post-comment-button" type="button" onClick={() => {
+                     <div className="post-head-text">Yorumlar: <span className="post-comment-button" onClick={() => {
                         setReplyModal(true)
                         setReply("")
                      }}>[Yorum yap]</span></div>

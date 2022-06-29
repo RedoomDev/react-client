@@ -129,6 +129,11 @@ a {
    color: white;
 }
 
+.text-5xl{
+   font-size: 50px;
+   color: white;
+}
+
 .navbar-grid {
    display: grid;
    grid-template-columns: 1fr auto;
@@ -157,6 +162,7 @@ a {
    border-radius: 10px;
    width: 55vw;
    text-align: left;
+   background-color: rgb(24 24 27);
 }
 
 
@@ -167,6 +173,7 @@ a {
    border-radius: 10px;
    width: 55vw;
    text-align: left;
+   background-color: rgb(24 24 27);
 }
 
 .post-head-text {
@@ -204,10 +211,13 @@ a {
    border-radius: 5px;
    font-size: 18px;
    text-decoration: none;
+   background-color: rgb(39 39 42);
 }
 
 .text-head {
    font-size: 24px;
+   display: grid;
+   grid-template-columns: 1fr auto;
 }
 
 .board-item-about {
@@ -394,9 +404,21 @@ a {
 }
 
 
+.mobile-redoom {
+   display: none;
+}
+
 
 /* admin end */
 @media (max-width: 1200px) {
+
+   .redoom-bg{
+      display: none;
+   }
+
+   .mobile-redoom{
+      display: block;
+   }
 
    .navbar-grid {
       grid-template-columns: auto;

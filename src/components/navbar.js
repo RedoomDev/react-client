@@ -13,7 +13,7 @@ export function Navbar() {
    return (
       <BoardContext.Consumer>
          {value => (
-            <div className="w-screen bg-zinc-900 ">
+            <div className="w-screen" style={{ backgroundColor: "rgb(24 24 27)" }}>
                <div style={{ paddingTop: 10 }}></div>
                <div id="navbar-main">
                   <Link to="/" className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</Link>

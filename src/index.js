@@ -64,6 +64,15 @@ function Index() {
                         )}
                      </div>
                   </div>
+                  <div className="mobile-redoom">
+                     {fetch === true ? (<App />) : (
+                        <div style={{ marginTop: '20%' }}>
+                           <Loader type="box-rectangular">
+
+                           </Loader>
+                        </div>
+                     )}
+                  </div>
                </AuthContext.Provider>
             </PostContext.Provider>
          </BoardContext.Provider>

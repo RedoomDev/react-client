@@ -12,12 +12,15 @@ export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
 
    return (
       <>
-         <div className="boards bg-zinc-900">
+         <div className="boards">
             <div className="boards-head">
-               <span className="text-head"><Link to="/">Anasayfa</Link> / {tag} <span className="post-comment-button" onClick={() => {
-                  setBoard(slug)
-                  setModal(true)
-               }}>[Yeni Gönderi]</span></span>
+               <div className="text-head">
+                  <span><Link to="/">Anasayfa</Link> / {tag}</span>
+                  <span className="post-comment-button new-post" onClick={() => {
+                     setBoard(slug)
+                     setModal(true)
+                  }}>[Yeni Gönderi]</span>
+               </div>
                <div className="cizgi-2"></div>
                <div className="boards-items">
                   {posts.map(posts => (
@@ -26,7 +29,7 @@ export function KonuPosts({ updatePosts, limit, setLimit, tag, posts, slug }) {
                   <div style={{ height: 15 }}></div>
                   <ReklamNormal />
                   {posts.length + 20 > limit ? (
-                     <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={() => {
+                     <div className="form-button" style={{ textAlign: 'center' }} onClick={() => {
                         setLimit(limit + 20)
                         updatePosts(limit + 20)
                      }}>Devamını yükle</div>
