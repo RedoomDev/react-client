@@ -3,13 +3,11 @@ import moment from 'moment';
 import PostText from "./PostText";
 import { ReklamPostContent } from "../adsense/reklam";
 import { api_url } from "../../config";
+import PostImage from "./PostImage";
 moment.locale('tr')
 
 
 export default function PostMain({ post, type, setReplyModal, setReply }) {
-
-   const [click, setClick] = useState(false)
-   const imageRef = useRef()
 
    return (
       type === "reply" ? (
@@ -32,18 +30,11 @@ export default function PostMain({ post, type, setReplyModal, setReply }) {
                <div className="post-author-name">Tarih: {moment(post.date).fromNow()}</div>
             </div>
             <div className="post-content">
-               <PostText text={post.icerik}></PostText>
-               {post.image ? (
-                  <img className="post-image" ref={imageRef} loading="lazy" src={click === false ? api_url + "/media/" + post.id + "/" + "?width=200&height=200" : api_url + "/media/" + post.id + "/"} key={post.id} alt="" onClick={(e) => {
-                     if (click === false) {
-                        imageRef.current.style.width = "100%"
-                        setClick(true)
-                     } else {
-                        imageRef.current.style.width = "calc(100vw - 85vw)"
-                        setClick(false)
-                     }
-                  }} />
-               ) : (<></>)}
+               {!post.icerik ? (
+                  <PostImage post={post}></PostImage>
+               ) : (
+                  <PostText text={post.icerik}></PostText>
+               )}
             </div>
          </div>
       )

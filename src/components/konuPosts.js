@@ -12,12 +12,14 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
    const [board, setBoard] = useState(false)
    const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
 
+   const [section, setSection] = useState("text")
+
    return (
       <>
          <div className="boards">
             <div className="boards-head">
                <div className="text-head">
-                  <span><Link className="text-white"  to="/">Anasayfa</Link> / {currentBaord}</span>
+                  <span><Link className="text-white" to="/">Anasayfa</Link> / {currentBaord}</span>
                   <span className="post-comment-button new-post" onClick={() => {
                      setBoard(slug)
                      setModal(true)
@@ -25,9 +27,31 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
                </div>
                <div className="cizgi-2"></div>
                <div className="boards-items">
-                  {posts.map(posts => (
-                     <Post post={posts}></Post>
-                  ))}
+                  <div className="section-menu">
+                     <div className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</div>
+                     <div className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</div>
+                  </div>
+
+                  {section === "text" ? (
+                     posts.map(posts => (
+                        posts.icerik ? (
+                           <Post post={posts}></Post>
+                        ) : (<></>)
+                     ))
+                  ) : (<></>)}
+
+                  {section === "image" ? (
+                     <div className="board-images-grid">
+                        {
+                           posts.map(posts => (
+                              !posts.icerik ? (
+                                 <Post post={posts}></Post>
+                              ) : (<></>)
+                           ))
+                        }
+                     </div>
+                  ) : (<></>)}
+
                   <div style={{ height: 15 }}></div>
                   <ReklamNormal />
                   {posts.length + 20 > limit ? (

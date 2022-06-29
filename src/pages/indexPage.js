@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Boards } from "../components/boards";
+import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 
@@ -22,6 +23,9 @@ export function IndexPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
+               </div>
+               <div>
+                  <MostBoards />
                </div>
             </div>
          </div>

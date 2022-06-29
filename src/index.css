@@ -144,7 +144,7 @@ a {
 
 .main-area {
    display: grid;
-   grid-template-columns: auto 300px;
+   grid-template-columns: 1fr 20vw 20vw;
    justify-content: center;
 }
 
@@ -155,6 +155,9 @@ a {
    border-radius: 10px;
    padding: 20px;
    background-color: rgb(24 24 27);
+   position: sticky;
+   top: 0;
+   z-index: 0;
 }
 
 .boards {
@@ -236,6 +239,24 @@ a {
    font-size: 24px;
 }
 
+.board-images-grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+.board-item-with-image {
+   display: grid;
+   padding: 10px;
+   padding-top: 5px;
+   margin: 10px;
+   margin-top: 0px;
+}
+
+.board-item-image {
+   border-radius: 10px;
+   width: 100%;
+}
+
 .text-head {
    font-size: 24px;
    display: grid;
@@ -262,6 +283,7 @@ a {
    height: 100vh;
    width: 100vw;
    background-color: rgb(0, 0, 0, .7);
+   z-index: 10;
 }
 
 .window {
@@ -310,14 +332,33 @@ a {
    background-color: rgb(33, 33, 36);
 }
 
+.post-images {
+   max-width: 100%;
+   margin: auto;
+   background-color: black;
+   border-radius: 10px;
+   margin-top: 10px;
+}
 
 .post-image {
-   width: calc(100vw - 85vw);
+   max-width: 100%;
+   height: 100%;
    display: block;
-   border-radius: 15px;
-   margin: 30px;
-   margin-top: 2px;
-   margin-left: 0px;
+   margin: auto;
+}
+
+
+.indicator {
+   cursor: pointer;
+   padding: 10px;
+   text-align: center;
+   border: 1px #666 solid;
+   margin: 0;
+}
+
+.indicator.active {
+   color: #fff;
+   background: #666;
 }
 
 .upload__image-wrapper {
@@ -338,10 +379,54 @@ a {
 }
 
 .uploaded_image {
-   width: calc(100% - 100px);
+   width: 200px;
+   height: 200px;
    margin: auto;
    border-radius: 15px;
    margin-bottom: 30px;
+}
+
+.image-items {
+   display: flex;
+   overflow: auto;
+   gap: 24px;
+}
+
+.image-items::-webkit-scrollbar {
+   width: 20px;
+}
+
+/* Track */
+.image-items::-webkit-scrollbar-track {
+   border-radius: 10px;
+   border: 1px solid gray;
+}
+
+/* Handle */
+.image-items::-webkit-scrollbar-thumb {
+   background: rgb(255, 255, 255);
+   border-radius: 10px;
+}
+
+.image-item {
+   margin-top: 20px;
+   position: relative;
+}
+
+.delete-image {
+   position: absolute;
+   background-color: white;
+   color: black;
+   font-size: 20px;
+   padding: 5px;
+   padding-left: 12px;
+   padding-right: 12px;
+   right: 0;
+   margin-top: -15px;
+   margin-right: -15px;
+   border-radius: 100%;
+   cursor: pointer;
+   z-index: 1;
 }
 
 .form-head {
@@ -451,6 +536,15 @@ a {
 
 /* admin end */
 @media (max-width: 1200px) {
+
+   .post-images {
+      max-width: 100%;
+   }
+
+   .post-image {
+      max-width: 100%;
+      height: 100%;
+   }
 
    .redoom-bg {
       display: none;

@@ -20,7 +20,7 @@ export function PostWindow({ setModal, board }) {
 
    const [images, setImages] = React.useState([]);
    const [click, setClick] = useState(false)
-   const maxNumber = 1;
+   const maxNumber = 10;
    const maxFileSize = 8000000;
 
 
@@ -70,10 +70,10 @@ export function PostWindow({ setModal, board }) {
          const fileObject = e.clipboardData.files[0];
          getBase64(fileObject).then(basedata => {
             const data = { data_url: basedata, file: fileObject }
-            if (images[0]) {
-               onImageChanege([data], 0)
-            } else {
-               setImages([data])
+            if (images.length < 10) {
+               setImages(old => [...old, data])
+            }else{
+               setErr("En fazla 10 resim")
             }
          })
       }
@@ -82,8 +82,8 @@ export function PostWindow({ setModal, board }) {
 
    return (
       <div className="fullscreen-modal-window" onPaste={handlePaste}>
-         <div className="window" onPaste={handlePaste}>
-            <div className="form" onPaste={handlePaste}>
+         <div className="window">
+            <div className="form">
                <span className="post-comment-button" onClick={() => setModal(false)} >[Kapat]</span>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
@@ -122,14 +122,14 @@ export function PostWindow({ setModal, board }) {
                      {({
                         imageList,
                         onImageUpload,
-                        onImageUpdate,
+                        onImageRemove,
                         isDragging,
                         dragProps,
                         errors
                      }) => (
                         // write your building UI
                         <div className="upload__image-wrapper">
-                           {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 1 resim</span>}</div>}
+                           {errors && <div>{errors.maxFileSize && <span>Dosya boyutu en fazla 8mb olabilir</span>}       {errors.maxNumber && <span>En fazla 10 resim</span>}</div>}
                            <button
                               className="upload_image_button bg-zinc-800"
                               style={isDragging ? { color: 'red' } : undefined}
@@ -139,14 +139,14 @@ export function PostWindow({ setModal, board }) {
                               [Tıkla ya da üstüne resim sürükle]
                            </button>
                            &nbsp;
-                           {imageList.map((image, index) => (
-                              <div key={index} className="image-item">
-                                 <img src={image['data_url']} alt="" className="uploaded_image" />
-                                 <div className="image-item__btn-wrapper">
-                                    <button onClick={() => onImageUpdate(index)} className="upload_image_button bg-zinc-800">[değiştir]</button>
+                           <div className="image-items">
+                              {imageList.map((image, index) => (
+                                 <div key={index} className="image-item">
+                                    <span className="delete-image" onClick={() => onImageRemove(index)}><i className="fa fa-x"></i></span>
+                                    <img src={image['data_url']} alt="" className="uploaded_image" />
                                  </div>
-                              </div>
-                           ))}
+                              ))}
+                           </div>
                         </div>
                      )}
                   </ImageUploading>
@@ -166,7 +166,7 @@ export function PostWindow({ setModal, board }) {
                {click === false ? (
                   <div className="form-button" onClick={() => {
                      setClick(true)
-                     NewPost({ username, icerik, board, baslik, image: images[0] || "", token: token }).then(res => {
+                     NewPost({ username, icerik, board, baslik, image: images || "", token: token }).then(res => {
                         if (res.message) {
                            localStorage.setItem("username", username)
                            setErr(res.message)
