@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { BoardContext } from "../contexts/board.context";
 import SettingsWindow from "./settingsWindow";
+import Select from 'react-select'
+import { CurrentBoard } from "../contexts/currentBoard.context";
 
 
 export function Navbar() {
@@ -10,14 +12,55 @@ export function Navbar() {
    const [modal, setModal] = useState(false)
    const history = useHistory()
 
+   const [options, setOptions] = useState([{
+      'label': "Anasayfa",
+      'value': ""
+   }])
+
+   const { slug } = useParams()
+
+   const value = useContext(BoardContext)
+   const currentBaord = useContext(CurrentBoard)
+
+   useEffect(() => {
+      value[0].sort((a, b) => { return b.posts - a.posts }).map(a => {
+         setOptions(old => [...old, {
+            'label': a.baslik,
+            'value': a.slug
+         }])
+      })
+
+      if (slug) {
+         currentBaord[1](value[0].find(a => a.slug === slug).baslik)
+      } else {
+         currentBaord[1]("Anasayfa")
+      }
+   }, [setOptions, currentBaord, slug])
+
+
    return (
       <BoardContext.Consumer>
          {value => (
             <div className="w-screen" style={{ backgroundColor: "rgb(24 24 27)" }}>
                <div style={{ paddingTop: 10 }}></div>
                <div id="navbar-main">
-                  <div>
-                     <Link to="/" className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</Link>
+                  <div className="navbar-brand-area">
+                     <div>
+                        <Link to="/" className="text-5xl" style={{ marginLeft: '2.5vw' }}>Redoom</Link>
+                     </div>
+                     <div className="navbar-select-sey">
+                        <Select options={options} defaultValue={{
+                           'label': slug ? (value[0].find(a => a.slug === slug).baslik || currentBaord[0]) : (currentBaord[0] || "Anasayfa")
+                        }} key="select" onChange={(e) => {
+                           if (e.value) {
+                              history.push("/konu/" + e.value)
+                              currentBaord[1](e.label)
+                           } else {
+                              history.push("/")
+                              currentBaord[1]("Anasayfa")
+                           }
+                        }} className="navbar-select"></Select>
+                     </div>
                   </div>
                   <div id="main">
                      <input id="search-input" type="search" name="q" placeholder="Bir şeyler ara..." value={input} autocomplete="off"
@@ -45,7 +88,8 @@ export function Navbar() {
                   <SettingsWindow setModal={setModal}></SettingsWindow>
                ) : (<></>)}
             </div>
-         )}
-      </BoardContext.Consumer>
+         )
+         }
+      </BoardContext.Consumer >
    )
 }

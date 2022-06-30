@@ -17,6 +17,29 @@ a {
    text-decoration: none;
 }
 
+.navbar-select-sey{
+   display: flex;
+   margin: auto;
+   margin-left: 20px;
+   width: 70%;
+   float: left;
+}
+
+.navbar-select{
+   margin: auto;
+   margin-bottom: 0px;
+   padding: 5px;
+   font-size: 18px;
+   color: black;
+   width: 100%;
+}
+
+.text-5xl {
+   font-size: 38px;
+   color: white;
+}
+
+
 /* search bar start */
 
 #main {
@@ -31,6 +54,11 @@ a {
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
    max-width: 100vw;
+}
+
+.navbar-brand-area{
+   display: grid;
+   grid-template-columns: auto 1fr;
 }
 
 #search-input {
@@ -141,11 +169,6 @@ a {
 }
 
 .navbar-board:hover {
-   color: white;
-}
-
-.text-5xl {
-   font-size: 40px;
    color: white;
 }
 

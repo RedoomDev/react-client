@@ -7,8 +7,6 @@ export function Board({ board }) {
 
    const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
 
-   console.log(currentBaord)
-
    return (
       <Link to={"/konu/" + board.slug} onClick={() => { 
          setCurrentBoard(board.baslik)
