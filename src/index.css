@@ -21,13 +21,21 @@ a {
 
 #main {
    display: flex;
-   float: right;
    margin-right: 2.5vw;
+   margin: auto;
+   width: 95%;
+
+}
+
+#navbar-main {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   max-width: 100vw;
 }
 
 #search-input {
    height: 40px;
-   width: 220px;
+   width: 100%;
    border: none;
    border-radius: 5px;
    margin-right: 0;
@@ -112,16 +120,24 @@ a {
 .navbar-boards {
    display: flex;
    flex-wrap: wrap;
+   margin-right: 2vw;
+}
+
+.navbar-boards-grid {
+   display: grid;
+   grid-template-columns: 1fr auto;
 }
 
 .navbar-board {
-   padding: 5px;
-   border-radius: 10px;
    color: rgb(226, 226, 226);
-   background-color: rgb(42, 42, 42);
    text-decoration: none;
    font-size: 22px;
+   padding: 10px;
+   border-radius: 15px;
+   background-color: rgb(50, 50, 52);
    margin: auto;
+   margin-right: 10px;
+   margin-bottom: 5px;
 }
 
 .navbar-board:hover {
@@ -136,8 +152,6 @@ a {
 .navbar-grid {
    display: grid;
    grid-template-columns: 1fr auto;
-   width: 95vw;
-   margin: auto;
 }
 
 .main-area {
@@ -229,7 +243,7 @@ a {
 }
 
 .board-item {
-   margin-top: 10px;
+   margin-top: 20px;
    padding: 5px;
    border-radius: 5px;
    font-size: 18px;
@@ -543,31 +557,31 @@ a {
    color: white;
 }
 
-.post-image-area{
+.post-image-area {
    display: none;
 }
 
-.selected-image{
+.selected-image {
    width: 100%;
 }
 
 /* admin end */
 @media (max-width: 1200px) {
 
-   .board-images-grid{
+   .board-images-grid {
       grid-template-columns: auto;
    }
 
-   .post-images-pc{
+   .post-images-pc {
       display: none;
    }
-   
-   .post-image-area{
+
+   .post-image-area {
       display: block;
       width: 50vw;
       height: 50vw;
    }
-   
+
 
    .post-images {
       width: 100%;
@@ -585,6 +599,7 @@ a {
 
    #navbar-main {
       display: grid;
+      grid-template-columns: auto;
    }
 
    #main {
