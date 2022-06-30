@@ -21,7 +21,6 @@ export function Navbar() {
                      <input id="search-input" type="search" name="q" placeholder="Bir şeyler ara..." value={input} autocomplete="off"
                         pattern="[^'\x22]+" onChange={(e) => {
                            setInput(e.target.value)
-                           e.target.value.length > 0 ? history.push("/search?query=" + e.target.value) : history.push("/")
                         }} />
                      <Link to={input.length > 0 ? "/search?query=" + input : "/"}>
                         <button id="search-button" type="button">Ara</button>

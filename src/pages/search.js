@@ -1,12 +1,13 @@
 
 
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { KonuPosts } from "../components/konuPosts";
 import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
+import { CurrentBoard } from "../contexts/currentBoard.context";
 import { GetPostsFromBoard } from "../fetch/fetchs";
 import { AdminGet } from "./admin/fetchs";
 
@@ -22,6 +23,8 @@ export function SearchPage() {
 
    const [load, setLoad] = useState(true)
 
+   const [currentBaord, setCurrentBoard] = useContext(CurrentBoard)
+
    const loc = useLocation()
 
    useEffect(() => {
@@ -32,6 +35,8 @@ export function SearchPage() {
             setPosts(res.data)
          }
       })
+
+      setCurrentBoard("Ara")
    }, [loc])
 
 
