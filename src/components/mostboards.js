@@ -24,7 +24,6 @@ export function MostBoards(params) {
                               <Link to={"/konu/" + board.slug} onClick={() => { setCurrentBoard(board.baslik) }}>
                                  <div className="board-item">
                                     <div className="board-item-head">{board.baslik.length > 20 ? (board.baslik.slice(0, 20) + "...") : (board.baslik)}</div>
-                                    <div className="cizgi-2"></div>
                                     <div className="board-item-about">{board.about.length > 50 ? (board.about.slice(0, 50) + "...") : (board.icerik)}</div>
                                  </div>
                               </Link>

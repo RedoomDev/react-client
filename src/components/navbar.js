@@ -49,7 +49,7 @@ export function Navbar() {
                         <Link to="/" className="text-5xl" style={{ marginLeft: '2.5vw' }}>Redoom</Link>
                      </div>
                      <div className="navbar-select-sey">
-                        <Select options={options} defaultValue={{
+                        <Select classNamePrefix="react-select" options={options} defaultValue={{
                            'label': slug ? (value[0].find(a => a.slug === slug).baslik || currentBaord[0]) : (currentBaord[0] || "Anasayfa")
                         }} key="select" onChange={(e) => {
                            if (e.value) {
@@ -59,7 +59,7 @@ export function Navbar() {
                               history.push("/")
                               currentBaord[1]("Anasayfa")
                            }
-                        }} className="navbar-select"></Select>
+                        }} className="react-select-container"></Select>
                      </div>
                   </div>
                   <div id="main">
