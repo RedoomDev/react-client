@@ -51,8 +51,6 @@ export function SearchPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
-               </div>
-               <div>
                   <MostBoards />
                </div>
             </div>

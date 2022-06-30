@@ -17,6 +17,10 @@ export function Navbar() {
                <div style={{ paddingTop: 10 }}></div>
                <div id="navbar-main">
                   <Link to="/" className="text-5xl" style={{ margin: '2.5vw' }}>Redoom</Link>
+               </div>
+               <div className="cizgi"></div>
+               <div style={{ marginTop: 10 }}></div>
+               <div className="navbar-grid">
                   <div id="main">
                      <input id="search-input" type="search" name="q" placeholder="Bir şeyler ara..." value={input} autocomplete="off"
                         pattern="[^'\x22]+" onChange={(e) => {
@@ -25,14 +29,6 @@ export function Navbar() {
                      <Link to={input.length > 0 ? "/search?query=" + input : "/"}>
                         <button id="search-button" type="button">Ara</button>
                      </Link>
-                  </div>
-               </div>
-               <div className="cizgi"></div>
-               <div className="navbar-grid">
-                  <div className="navbar-boards">
-                     {value[0].map((a, idx) => (
-                        idx < 5 ? (<Link to={"/konu/" + a.slug} className="navbar-board">{a.baslik}</Link>) : (<></>)
-                     ))}
                   </div>
                   <div className="navbar-boards">
                      <Link onClick={() => {

@@ -23,8 +23,6 @@ export function IndexPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
-               </div>
-               <div>
                   <MostBoards />
                </div>
             </div>

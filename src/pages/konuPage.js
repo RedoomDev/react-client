@@ -57,8 +57,6 @@ export function KonuPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
-               </div>
-               <div>
                   <MostBoards />
                </div>
             </div>

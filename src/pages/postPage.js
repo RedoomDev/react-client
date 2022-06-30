@@ -80,8 +80,6 @@ export function PostPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
-               </div>
-               <div>
                   <MostBoards />
                </div>
             </div>

@@ -115,15 +115,13 @@ a {
 }
 
 .navbar-board {
-   margin-top: 10px;
-   margin-top: 10px;
-   margin-right: 10px;
    padding: 5px;
    border-radius: 10px;
    color: rgb(226, 226, 226);
    background-color: rgb(42, 42, 42);
    text-decoration: none;
-   font-size: 20px;
+   font-size: 22px;
+   margin: auto;
 }
 
 .navbar-board:hover {
@@ -144,7 +142,7 @@ a {
 
 .main-area {
    display: grid;
-   grid-template-columns: 1fr 20vw 20vw;
+   grid-template-columns: 1fr 20vw;
    justify-content: center;
 }
 
@@ -156,6 +154,17 @@ a {
    padding: 20px;
    background-color: rgb(24 24 27);
    position: sticky;
+   top: 0;
+   z-index: 0;
+}
+
+.boards-side-p {
+   width: 'auto';
+   margin: 10px;
+   margin-top: 20px;
+   border-radius: 10px;
+   padding: 20px;
+   background-color: rgb(24 24 27);
    top: 0;
    z-index: 0;
 }
@@ -241,7 +250,7 @@ a {
 
 .board-images-grid {
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .board-item-with-image {
@@ -253,6 +262,7 @@ a {
 }
 
 .board-item-image {
+   margin-top: 10px;
    border-radius: 10px;
    width: 100%;
 }
@@ -543,6 +553,10 @@ a {
 
 /* admin end */
 @media (max-width: 1200px) {
+
+   .board-images-grid{
+      grid-template-columns: auto;
+   }
 
    .post-images-pc{
       display: none;

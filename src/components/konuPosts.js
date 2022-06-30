@@ -44,8 +44,8 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
                <div className="cizgi-2"></div>
                <div className="boards-items">
                   <div className="section-menu">
-                     <Link to={"/konu/text/" + slug} className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</Link>
-                     <Link to={"/konu/image/" + slug} className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</Link>
+                     <Link to={slug ? "/konu/text/" + slug : null} className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</Link>
+                     <Link to={slug ? "/konu/image/" + slug : null} className="section-item" style={section === "image" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("image") }}>Resim</Link>
                   </div>
 
                   {section === "text" ? (

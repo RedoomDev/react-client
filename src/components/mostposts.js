@@ -6,7 +6,7 @@ import { MostPost } from "./mospost";
 export function MostPosts(params) {
 
    return (
-      <div className="boards-side">
+      <div className="boards-side-p">
          <PostContext.Consumer>
             {value => (
                <div className="boards-head">
