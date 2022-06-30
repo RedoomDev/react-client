@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { KonuPosts } from "../components/konuPosts";
+import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import { GetPostsFromBoard } from "../fetch/fetchs";
@@ -45,6 +46,9 @@ export function SearchPage() {
                </div>
                <div>
                   <MostPosts></MostPosts>
+               </div>
+               <div>
+                  <MostBoards />
                </div>
             </div>
          </div>
