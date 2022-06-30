@@ -521,6 +521,7 @@ a {
    padding-left: 0px;
    border-radius: 5px;
    padding: 5px;
+   color: white;
 }
 
 .admin-main-area-item {
@@ -546,9 +547,14 @@ a {
    padding: 10px;
    margin-left: 10px;
    border-radius: 10px;
+   color: white;
 }
 
 .edit:hover {
+   color: white;
+}
+
+.edit {
    color: white;
 }
 
