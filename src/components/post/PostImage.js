@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { api_url } from "../../config"
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+import ImageWindow from "./ImageModal";
 
 
 
@@ -22,6 +23,7 @@ export default function PostImage({ post }) {
    }
 
    const [images, setImages] = useState([])
+   const [selectedImage, setSelectedImage] = useState("")
 
    useEffect(() => {
       if (post.image) {
@@ -34,10 +36,19 @@ export default function PostImage({ post }) {
          <Slide autoplay={false} transitionDuration={200} infinite={false} prevArrow={properties.prevArrow} nextArrow={properties.nextArrow}>
             {images.map((a, idx) => (
                <>
-                  <img className="post-image" loading="lazy" src={api_url + "/media/" + post.id + "/" + idx} key={post.id} alt="" />
+                  <div onClick={() => {
+                     setSelectedImage(api_url + "/media/" + post.id + "/" + idx)
+                  }} className="post-image-area">
+                     <img className="post-image" loading="lazy" src={api_url + "/media/" + post.id + "/" + idx} key={post.id} alt="" />
+                  </div>
+
+                  <span className="post-images-pc">
+                     <img className="post-image" loading="lazy" src={api_url + "/media/" + post.id + "/" + idx} key={post.id} alt="" />
+                  </span>
                </>
             ))}
          </Slide>
+         {selectedImage ? (<ImageWindow images={images} selected={selectedImage} setSelected={setSelectedImage} />) : (<></>)}
       </div>
    )
 }

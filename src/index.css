@@ -529,20 +529,40 @@ a {
    color: white;
 }
 
-.section-item:hover{
+.section-item:hover {
    color: white;
+}
+
+.post-image-area{
+   display: none;
+}
+
+.selected-image{
+   width: 100%;
 }
 
 /* admin end */
 @media (max-width: 1200px) {
 
+   .post-images-pc{
+      display: none;
+   }
+   
+   .post-image-area{
+      display: block;
+      width: 50vw;
+      height: 50vw;
+   }
+   
+
    .post-images {
-      max-width: 100%;
+      width: 100%;
    }
 
    .post-image {
-      max-width: 100%;
+      width: 100%;
       height: 100%;
+      margin: auto;
    }
 
    .navbar-grid {
