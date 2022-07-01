@@ -39,7 +39,7 @@ export default function PostImage({ post }) {
                   <div onClick={() => {
                      setSelectedImage(api_url + "/media/" + post.id + "/" + idx)
                   }} className="post-image-area">
-                     <img className="post-image" loading="lazy" src={api_url + "/media/" + post.id + "/" + idx} key={post.id} alt="" />
+                     <img className="post-image" loading="lazy" src={api_url + "/media/" + post.id + "/" + idx + "?height=200&width=200"} key={post.id} alt="" />
                   </div>
 
                   <span className="post-images-pc">
