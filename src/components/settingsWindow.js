@@ -21,7 +21,7 @@ export default function SettingsWindow({ setModal }) {
       <div className="fullscreen-modal-window">
          <div className="window bg-zinc-900">
             <div className="form">
-               <span className="post-comment-button" onClick={() => setModal(false)}>[Kapat]</span>
+               <i className="close-button fa fa-x" onClick={() => setModal(false)} ></i>
                <div className="form-label">{message}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" value={username} onChange={(e) => {

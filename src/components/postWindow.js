@@ -115,7 +115,7 @@ export function PostWindow({ setModal, board }) {
       <div className="fullscreen-modal-window" onPaste={handlePaste}>
          <div className="window">
             <div className="form">
-               <span className="post-comment-button" onClick={() => setModal(false)} >[Kapat]</span>
+               <i className="close-button fa fa-x" onClick={() => setModal(false)} ></i>
                <div className="post-error">{err}</div>
                <div className="form-label">Kullanıcı Adı</div>
                <input className="form-input bg-zinc-800" value={username} onChange={(e) => {
