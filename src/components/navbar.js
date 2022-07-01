@@ -4,12 +4,14 @@ import { BoardContext } from "../contexts/board.context";
 import SettingsWindow from "./settingsWindow";
 import Select from 'react-select'
 import { CurrentBoard } from "../contexts/currentBoard.context";
+import { PostWindow } from "./postWindow";
 
 
 export function Navbar() {
 
    const [input, setInput] = useState("")
    const [modal, setModal] = useState(false)
+   const [newPost, setNewPost] = useState(false)
    const history = useHistory()
 
    const [options, setOptions] = useState([{
@@ -95,7 +97,7 @@ export function Navbar() {
                      <div></div>
                      <div className="navbar-boards">
                         <Link onClick={() => {
-                           setModal(true)
+                           setNewPost(true)
                         }} className="navbar-board"><i className="fa fa-plus" /> Yeni</Link>
                         <Link onClick={() => {
                            setModal(true)
@@ -106,6 +108,9 @@ export function Navbar() {
                <div style={{ paddingBottom: 10 }}></div>
                {modal ? (
                   <SettingsWindow setModal={setModal}></SettingsWindow>
+               ) : (<></>)}
+               {newPost ? (
+                  <PostWindow setModal={setNewPost} />
                ) : (<></>)}
             </div>
          )
