@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 
 
-export default function Helmet(props) {
+export default function SEO(props) {
 
    const { title, desc, url, type } = props
 

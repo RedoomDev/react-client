@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import SEO from "../components/helmet";
 import { KonuPosts } from "../components/konuPosts";
 import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
@@ -49,6 +50,7 @@ export function KonuPage() {
 
    return (
       <div className="text-white font-mono">
+         <SEO title={"Redoom | " + currentBaord[0]} desc={currentBaord[0] + " Konusundaki tüm gönderiler burada. Paylaşılan yazı ve resimleri burada bulabilirsin"} url={"konu/" +slug}></SEO>
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">

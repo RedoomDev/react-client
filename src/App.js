@@ -20,38 +20,40 @@ import UserEdit from './pages/admin/user/edit';
 import PostsCommentsIndex from './pages/admin/posts/comments';
 import { SearchPage } from './pages/search';
 import 'moment/locale/tr'
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
 
 
    return (
       <BrowserRouter>
-
-         <Route path="/" component={IndexPage} exact />
-         <Route path="/konu/:slug" component={KonuPage} exact />
-         <Route path="/konu/:type/:slug" component={KonuPage} exact />
-         <Route path="/post/:id" component={PostPage} exact />
-         <Route path="/search" component={SearchPage}></Route>
-         <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
-         <Switch exact>
-            <PrivateRoute path="/admin*">
-               <div style={{ color: 'white' }}>
-                  <Navbar></Navbar>
-                  <div className='admin-area' exact>
-                     <AdminSidebar exact />
-                     <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
-                     <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
-                     <PrivateRoute path="/admin/board/new" component={BoardNew}></PrivateRoute>
-                     <PrivateRoute path="/admin/board/edit/:boardslug" component={BoardEdit}></PrivateRoute>
-                     <PrivateRoute path="/admin/users" component={UsersIndex} exact></PrivateRoute>
-                     <PrivateRoute path="/admin/user/new" component={UserNew} exact></PrivateRoute>
-                     <PrivateRoute path="/admin/user/edit/:id" component={UserEdit}></PrivateRoute>
-                     <PrivateRoute path="/admin/posts" component={PostsIndex}></PrivateRoute>
-                     <PrivateRoute path="/admin/post/comments/:id" component={PostsCommentsIndex}></PrivateRoute>
+         <HelmetProvider>
+            <Route path="/" component={IndexPage} exact />
+            <Route path="/konu/:slug" component={KonuPage} exact />
+            <Route path="/konu/:type/:slug" component={KonuPage} exact />
+            <Route path="/post/:id" component={PostPage} exact />
+            <Route path="/search" component={SearchPage}></Route>
+            <NotAuth path="/admin/login" component={AdminLogin}></NotAuth>
+            <Switch exact>
+               <PrivateRoute path="/admin*">
+                  <div style={{ color: 'white' }}>
+                     <Navbar></Navbar>
+                     <div className='admin-area' exact>
+                        <AdminSidebar exact />
+                        <PrivateRoute path="/admin" component={AdminIndex} exact></PrivateRoute>
+                        <PrivateRoute path="/admin/board" component={BoardIndex} exact></PrivateRoute>
+                        <PrivateRoute path="/admin/board/new" component={BoardNew}></PrivateRoute>
+                        <PrivateRoute path="/admin/board/edit/:boardslug" component={BoardEdit}></PrivateRoute>
+                        <PrivateRoute path="/admin/users" component={UsersIndex} exact></PrivateRoute>
+                        <PrivateRoute path="/admin/user/new" component={UserNew} exact></PrivateRoute>
+                        <PrivateRoute path="/admin/user/edit/:id" component={UserEdit}></PrivateRoute>
+                        <PrivateRoute path="/admin/posts" component={PostsIndex}></PrivateRoute>
+                        <PrivateRoute path="/admin/post/comments/:id" component={PostsCommentsIndex}></PrivateRoute>
+                     </div>
                   </div>
-               </div>
-            </PrivateRoute>
-         </Switch>
+               </PrivateRoute>
+            </Switch>
+         </HelmetProvider>
       </BrowserRouter>
    );
 }

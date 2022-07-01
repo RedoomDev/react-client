@@ -8,7 +8,7 @@ import { MostBoards } from "../components/mostboards";
 import { MostPosts } from "../components/mostposts";
 import { Navbar } from "../components/navbar";
 import { CurrentBoard } from "../contexts/currentBoard.context";
-import { GetPostsFromBoard } from "../fetch/fetchs";
+import SEO from "../components/helmet";
 import { AdminGet } from "./admin/fetchs";
 
 
@@ -43,6 +43,7 @@ export function SearchPage() {
 
    return (
       <div className="text-white font-mono">
+         <SEO title={"Redoom | " + loc.search.split("=")[1] + " Araması"} desc={loc.search.split("=")[1] + " aramasının sonuçları. Sitemizdeki tüm göndelerin aramasını bu sayfadan yapabilirsiniz."} url={"search?=" + loc.search.split("=")[1]}></SEO>
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
