@@ -349,6 +349,15 @@ a {
 }
 
 
+.window2 {
+   width: 40vw;
+   margin: auto;
+   margin-top: 100px;
+   margin-bottom: 100px;
+   border-radius: 10px;
+   background-color: #18181B;
+}
+
 .form {
    padding: 20px;
    max-width: 100%;
@@ -409,8 +418,13 @@ a {
    margin-top: 10px;
 }
 
+.post-images-pc{
+   cursor: pointer;
+}
+
 .post-image {
    height: 30vw;
+   width: 30vw;
    display: block;
    margin: auto;
 }

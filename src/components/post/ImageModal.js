@@ -4,9 +4,9 @@ export default function ImageWindow({ setSelected, selected }) {
 
    return (
       <div className="fullscreen-modal-window">
-         <div className="window bg-zinc-900">
+         <div className="window2 bg-zinc-900">
             <div className="form">
-               <span className="post-comment-button" onClick={() => setSelected("")}>[Kapat]</span>
+               <i className="close-button fa fa-x" onClick={() => setSelected("")} ></i>
                <div>
                   <img className="selected-image" src={selected}></img>
                </div>
