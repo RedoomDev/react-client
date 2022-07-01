@@ -10,7 +10,6 @@ export default function Helmet(props) {
       desc: "Redoom, 2022 yılında açılan tamamen anonim olan bir forum sitesidir. Anonim olarak gönderiler paylaşabilirsiniz",
       keywords: "Anonim Forum, Redoom, Anime, Wallpaper, Duvar Kağıdı, Oyun, Bilgisayar Oyunu, Bilgisayar, Siyaset, Yazılım, Tarih, Matematik, Sanat, Ekonomi, Konudışı, Teknoloji, Müzik, Spor, Flood, Flooadlar, Facebook, Filmler, Diziler",
       image: "https://cdn.discordapp.com/attachments/813060800117080105/934792293142102046/Redoom_100_100_px.png",
-
    }
 
    return (
