@@ -38,6 +38,19 @@ export function Navbar() {
    }, [setOptions, currentBaord, slug])
 
 
+   const customStyles = {
+      control: () => ({
+         backgroundColor: 'rgb(47, 47, 53)',
+         minHeight: 38,
+         display: 'flex',
+      }),
+      singleValue: () => ({
+         color: 'white',
+         display: 'flex',
+         gridArea: '1 / 1 / 2 / 3'
+      })
+   }
+
    return (
       <BoardContext.Consumer>
          {value => (
@@ -49,17 +62,24 @@ export function Navbar() {
                         <Link to="/" className="text-5xl" style={{ marginLeft: '2.5vw' }}>Redoom</Link>
                      </div>
                      <div className="navbar-select-sey">
-                        <Select classNamePrefix="react-select" options={options} defaultValue={{
-                           'label': slug ? (value[0].find(a => a.slug === slug).baslik || currentBaord[0]) : (currentBaord[0] || "Anasayfa")
-                        }} key="select" onChange={(e) => {
-                           if (e.value) {
-                              history.push("/konu/" + e.value)
-                              currentBaord[1](e.label)
-                           } else {
-                              history.push("/")
-                              currentBaord[1]("Anasayfa")
-                           }
-                        }} className="react-select-container"></Select>
+                        <Select
+                           classNamePrefix="react-select"
+                           options={options} defaultValue={{
+                              'label': slug ? (value[0].find(a => a.slug === slug).baslik || currentBaord[0]) : (currentBaord[0] || "Anasayfa")
+                           }}
+                           key="select"
+                           onChange={(e) => {
+                              if (e.value) {
+                                 history.push("/konu/" + e.value)
+                                 currentBaord[1](e.label)
+                              } else {
+                                 history.push("/")
+                                 currentBaord[1]("Anasayfa")
+                              }
+                           }}
+                           className="react-select-container"
+                           styles={customStyles}
+                        ></Select>
                      </div>
                   </div>
                   <div id="main">

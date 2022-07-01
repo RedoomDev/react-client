@@ -34,9 +34,8 @@ a {
    width: 100%;
 }
 
-.react-select__control {
-   background: rgb(47, 47, 53);
-   background-color: rgb(47, 47, 53);
+.react-select__single-value {
+   color: 'white',
 }
 
 .text-5xl {
@@ -76,10 +75,11 @@ a {
    margin-bottom: 0px;
    padding: 5px;
    border-top-right-radius: 0;
-   color: black;
+   color: white;
    border-bottom-right-radius: 0;
    transition: .1s ease-in-out;
    border-bottom: 1px solid transparent;
+   background-color: rgb(47, 47, 53)
 }
 
 #search-input:focus {

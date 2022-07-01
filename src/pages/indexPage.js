@@ -9,6 +9,7 @@ import { Navbar } from "../components/navbar";
 
 export function IndexPage() {
 
+
    useEffect(() => {
       window.scrollTo(0, 0)
    }, [])
