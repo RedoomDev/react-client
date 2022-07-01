@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { NewPost } from "../fetch/fetchs"
 import ImageUploading from 'react-images-uploading';
 import { useHistory } from "react-router-dom";
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-
+import { BoardContext } from "../contexts/board.context";
+import Select from 'react-select'
 
 
 export function PostWindow({ setModal, board }) {
@@ -42,9 +43,25 @@ export function PostWindow({ setModal, board }) {
       setImages(imageList);
    };
 
+   const [options, setOptions] = useState([])
+
+   const boards = useContext(BoardContext)
+
+   const [boardselection, setBoard] = useState("undefined")
+
    useEffect(() => {
       window.scrollTo(0, 0)
-   }, [])
+      boards[0].map(a => {
+         setOptions(old => [...old, {
+            'label': a.baslik,
+            'value': a.slug
+         }])
+      })
+
+      if(board){
+         setBoard(board)
+      }
+   }, [board])
 
    const getBase64 = file => {
       return new Promise(resolve => {
@@ -72,12 +89,26 @@ export function PostWindow({ setModal, board }) {
             const data = { data_url: basedata, file: fileObject }
             if (images.length < 10) {
                setImages(old => [...old, data])
-            }else{
+            } else {
                setErr("En fazla 10 resim")
             }
          })
       }
    }
+
+   const customStyles = {
+      control: () => ({
+         backgroundColor: 'rgb(47, 47, 53)',
+         minHeight: 38,
+         display: 'flex',
+      }),
+      singleValue: () => ({
+         color: 'white',
+         display: 'flex',
+         gridArea: '1 / 1 / 2 / 3'
+      })
+   }
+
 
 
    return (
@@ -94,6 +125,24 @@ export function PostWindow({ setModal, board }) {
                <input className="form-input bg-zinc-800" onChange={(e) => {
                   setBaslik(e.target.value)
                }}></input>
+
+               {!board ? (
+                  <>
+                     <div className="form-label">Konu</div>
+                     <Select
+                        classNamePrefix="react-select"
+                        options={options} defaultValue={{
+                           'label': "Lütfen bir konu seçiniz"
+                        }}
+                        key="select"
+                        onChange={(e) => {
+                           setBoard(e.value)
+                        }}
+                        className="react-select-container"
+                        styles={customStyles}
+                     ></Select>
+                  </>
+               ) : (<></>)}
 
                <div className="section-menu">
                   <div className="section-item" style={section === "text" ? ({ borderBottom: "1px solid white", backgroundColor: "rgb(39 39 42)" }) : ({})} onClick={() => { setSection("text") }}>Yazı</div>
@@ -166,7 +215,7 @@ export function PostWindow({ setModal, board }) {
                {click === false ? (
                   <div className="form-button" onClick={() => {
                      setClick(true)
-                     NewPost({ username, icerik, board, baslik, image: images || "", token: token }).then(res => {
+                     NewPost({ username, icerik, board: boardselection, baslik, image: images || "", token: token }).then(res => {
                         if (res.message) {
                            localStorage.setItem("username", username)
                            setErr(res.message)
