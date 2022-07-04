@@ -27,7 +27,7 @@ export function Navbar() {
    useEffect(() => {
       value[0].sort((a, b) => { return b.posts - a.posts }).map(a => {
          setOptions(old => [...old, {
-            'label': a.baslik,
+            'label': a.baslik.length > 20 ? (a.baslik.slice(0, 20) + "...") : (a.baslik),
             'value': a.slug
          }])
       })
@@ -45,11 +45,15 @@ export function Navbar() {
          backgroundColor: 'rgb(47, 47, 53)',
          minHeight: 38,
          display: 'flex',
+         borderRadius: 5
       }),
       singleValue: () => ({
          color: 'white',
          display: 'flex',
-         gridArea: '1 / 1 / 2 / 3'
+         gridArea: '1 / 1 / 2 / 3',
+         fontSize: 22,
+         padding: 8,
+         borderRadius: 5
       })
    }
 
@@ -60,14 +64,14 @@ export function Navbar() {
                <div style={{ paddingTop: 10 }}></div>
                <div id="navbar-main">
                   <div className="navbar-brand-area">
-                     <div>
-                        <Link to="/" className="text-5xl" style={{ marginLeft: '2.5vw' }}>Redoom</Link>
+                     <div className="navbar-brand">
+                        <Link to="/" className="text-5xl">Redoom</Link>
                      </div>
                      <div className="navbar-select-sey">
                         <Select
                            classNamePrefix="react-select"
                            options={options} defaultValue={{
-                              'label': slug ? (value[0].find(a => a.slug === slug).baslik || currentBaord[0]) : (currentBaord[0] || "Anasayfa")
+                              'label': slug ? (value[0].find(a => a.slug === slug).baslik.length > 20 ? (value[0].find(a => a.slug === slug).baslik.slice(0, 20) + "...") : (value[0].find(a => a.slug === slug).baslik) || currentBaord[0].length ? (currentBaord[0].length > 20 ?(currentBaord[0].slice(0, 20) + "...") : (currentBaord[0])) : ("")) : (currentBaord[0].length ? (currentBaord[0].length > 1 ?(currentBaord[0].slice(0, 20) + "...") : (currentBaord[0])) : ("") || "Anasayfa")
                            }}
                            key="select"
                            onChange={(e) => {

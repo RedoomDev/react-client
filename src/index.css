@@ -38,8 +38,23 @@ a {
    color: 'white',
 }
 
+.navbar-brand{
+   display: flex;
+   margin: auto;
+   margin-left: 2.5vw;
+   font-size: 22px;
+   color: white;
+   background-color: rgb(47, 47, 53);
+   border-radius: 5px;
+   padding: 5px;
+}
+
 .text-5xl {
-   font-size: 38px;
+   color: white;
+   padding: 5px;
+}
+
+.text-5xl:hover{
    color: white;
 }
 
@@ -51,7 +66,6 @@ a {
    margin-right: 2.5vw;
    margin: auto;
    width: 95%;
-
 }
 
 #navbar-main {
@@ -66,12 +80,11 @@ a {
 }
 
 #search-input {
-   height: 40px;
    width: 100%;
    border: none;
    border-radius: 5px;
    margin-right: 0;
-   font-size: 20px;
+   font-size: 22px;
    margin-bottom: 0px;
    padding: 5px;
    border-top-right-radius: 0;
@@ -84,9 +97,6 @@ a {
 
 #search-input:focus {
    outline: none;
-   border-bottom: 1px solid rgb(39, 39, 42);
-   border-bottom-left-radius: 0;
-   border-bottom-right-radius: 0;
 }
 
 /*
@@ -97,10 +107,10 @@ a {
 
 
 #search-button {
-   height: 40px;
    width: 76px;
    border: none;
-   font-size: 20px;
+   font-size: 22px;
+   padding: 9px;
    border-radius: 0 5px 5px 0;
    background-color: rgb(39, 39, 42);
    color: white;
@@ -167,8 +177,8 @@ a {
    text-decoration: none;
    font-size: 22px;
    padding: 10px;
-   border-radius: 15px;
-   background-color: rgb(50, 50, 52);
+   border-radius: 5px;
+   background-color:rgb(47, 47, 53);
    margin: auto;
    margin-right: 10px;
    margin-bottom: 5px;
@@ -187,6 +197,7 @@ a {
    display: grid;
    grid-template-columns: 1fr 20vw;
    justify-content: center;
+   margin: auto;
 }
 
 .boards-side {
@@ -631,6 +642,10 @@ a {
 
 /* admin end */
 @media (max-width: 1200px) {
+
+   .window2{
+      width: 90vw;
+   }
 
    .board-images-grid {
       grid-template-columns: auto;

@@ -30,8 +30,8 @@ export function KonuPage() {
    useEffect(() => {
       GetPostsFromBoard({ slug: slug, limit: limit, skip: skip }).then(res => {
          if (res.data) {
-            setLoad(false)
             setPosts(res.data)
+            setLoad(false)
             currentBaord[1](boards[0].find(a => a.id === res.data[0].board).baslik)
          }
       })
@@ -50,12 +50,12 @@ export function KonuPage() {
 
    return (
       <div className="text-white font-mono">
-         <SEO title={"Redoom | " + currentBaord[0]} desc={currentBaord[0] + " Konusundaki tüm gönderiler burada. Paylaşılan yazı ve resimleri burada bulabilirsin"} url={"konu/" +slug}></SEO>
+         <SEO title={"Redoom | " + currentBaord[0]} desc={currentBaord[0] + " Konusundaki tüm gönderiler burada. Paylaşılan yazı ve resimleri burada bulabilirsin"} url={"konu/" + slug}></SEO>
          <Navbar></Navbar>
          <div className="container">
             <div className="main-area">
                <div>
-                  <KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} slug={slug}></KonuPosts>
+                  {!load ? (<KonuPosts tag="Gönderiler" key={limit} updatePosts={updatePosts} limit={limit} setLimit={setLimit} posts={posts} slug={slug}></KonuPosts>) : (<></>)}
                </div>
                <div>
                   <MostPosts></MostPosts>

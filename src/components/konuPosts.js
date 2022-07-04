@@ -18,7 +18,12 @@ export function KonuPosts({ updatePosts, limit, setLimit, posts, slug }) {
 
    useEffect(() => {
       if (!type) {
-         setSection("text")
+         const filter = posts.filter(post => post.image.length > 0)
+         if(filter.length >= 1){
+            setSection("text")
+         }else{
+            setSection("image")
+         }
       } else {
          if (type === "text") {
             setSection(type)
