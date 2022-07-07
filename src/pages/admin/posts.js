@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { BoardContext } from "../../contexts/board.context"
 import { AdminGet, AdminPost } from "./fetchs"
 import moment from 'moment';
+import AdminPostMain from "./posts/adminPost";
 moment.locale('tr')
 
 
@@ -42,39 +43,7 @@ export default function PostsIndex() {
          <div className="admin-main-area">
             <div className="admin-main-area-list">
                {posts.map((post, idx) => (
-                  <div className="admin-main-area-item bg-zinc-800">
-                     <div>
-                        <div className="admin-main-area-item-head">
-                           {post.baslik}
-                        </div>
-                        <div className="admin-main-area-item-details">
-                           <div>id: {post.id}</div>
-                           <div>Yazar: {post.username}</div>
-                           <div>İçerik: {post.icerik.slice(0, 100)}</div>
-                           <div>Tarih: {moment(post.date).format("MM/DD/YYYY HH:mm")}</div>
-                        </div>
-                     </div>
-                     <div>
-                        <div className="admin-main-area-action-items">
-                           <div className="admin-button delete" type="button"
-                              onClick={() => {
-                                 AdminPost({
-                                    endpoint: "/admin/post/delete/" + post.id
-                                 }).then(res => {
-                                    window.location.href = ""
-                                 })
-                              }}>
-                              Sil
-                           </div>
-                           <Link to={"/admin/post/comments/" + post.id} className="admin-button edit" type="button">
-                              Yorumları
-                           </Link>
-                           <Link to={"/post/" + post.id} className="admin-button edit" type="button">
-                              Gönderi
-                           </Link>
-                        </div>
-                     </div>
-                  </div>
+                  <AdminPostMain post={post}></AdminPostMain>
                ))}
                {skip <= posts.length ? (
                   <div className="form-button" type="button" style={{ textAlign: 'center' }} onClick={loadmore}>Devamını yükle</div>
