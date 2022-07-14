@@ -4,8 +4,8 @@ import AdSense from 'react-adsense';
 export function ReklamPostContent() {
    return (
       <AdSense.Google
-         client='ca-pub-7430781456275062'
-         slot='3194878747'
+         client='ca-pub-6897284010742480'
+         slot='4893193205'
          style={{ display: 'block' }}
          format='auto'
          responsive='true'
@@ -16,8 +16,8 @@ export function ReklamPostContent() {
 export function ReklamDikey() {
    return (
       <AdSense.Google
-         client='ca-pub-7430781456275062'
-         slot='7822605308'
+         client='ca-pub-6897284010742480'
+         slot='4561186565'
          style={{ display: 'block' }}
          format='auto'
          responsive='true'
@@ -28,8 +28,8 @@ export function ReklamDikey() {
 export function ReklamNormal() {
    return (
       <AdSense.Google
-         client='ca-pub-7430781456275062'
-         slot='3194878747'
+         client='ca-pub-6897284010742480'
+         slot='4893193205'
          style={{ display: 'block' }}
          format='auto'
          responsive='true'
